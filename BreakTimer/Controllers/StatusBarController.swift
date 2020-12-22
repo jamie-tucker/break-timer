@@ -5,7 +5,7 @@
 //  Created by Jamie Tucker on 2020-12-21.
 //
 
-import AppKit
+import SwiftUI
 
 class StatusBarController: NSObject, NSMenuDelegate {
   private var statusBar: NSStatusBar
@@ -17,38 +17,39 @@ class StatusBarController: NSObject, NSMenuDelegate {
   init(_ popover: NSPopover) {
     self.popover = popover
     self.statusBar = NSStatusBar.init()
-    self.statusItem = statusBar.statusItem(withLength: 28.0)
+    self.statusItem = self.statusBar.statusItem(withLength: 24.0)
     super.init()
 
     self.eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: self.mouseEventHandler)
 
     if let statusBarButton = self.statusItem.button {
-      statusBarButton.image = #imageLiteral(resourceName: "StatusBarIcon")
+      statusBarButton.image = NSImage(named: NSImage.Name("StatusBarIcon"))
       statusBarButton.image?.size = NSSize(width: 18.0, height: 18.0)
       statusBarButton.image?.isTemplate = true
-      statusBarButton.action = #selector(self.togglePopover(sender:))
-      statusBarButton.sendAction(on: [.rightMouseUp, .leftMouseUp])
+      statusBarButton.action = #selector(self.onButtonPressed(sender:))
+      statusBarButton.sendAction(on: [.rightMouseDown, .rightMouseUp, .leftMouseDown, .leftMouseUp])
       statusBarButton.target = self
     }
 
-    statusBarMenu = NSMenu(title: "Status Bar Menu")
+    statusBarMenu = NSMenu()
     statusBarMenu.delegate = self
     statusBarMenu.addItem(
-        withTitle: "Order an apple",
-        action: nil,
-        keyEquivalent: "")
-    let item = statusBarMenu.addItem(
-        withTitle: "Quit",
-        action: #selector(exitNow(sender:)),
-        keyEquivalent: "")
-    item.target = self
+      withTitle: "Preferences",
+      action: nil,
+      keyEquivalent: ",").target = self
+    statusBarMenu.addItem(
+      withTitle: "Quit",
+      action: #selector(exitNow(sender:)),
+      keyEquivalent: "q").target = self
   }
 
-  @objc func togglePopover(sender: AnyObject) {
+  @objc func onButtonPressed(sender: NSStatusBarButton) {
     let event = NSApp.currentEvent!
     if event.type == NSEvent.EventType.rightMouseUp {
       statusItem.menu = statusBarMenu
       statusItem.button?.performClick(self.hidePopover(sender))
+    } else if event.type == NSEvent.EventType.rightMouseDown || event.type == NSEvent.EventType.leftMouseDown {
+      sender.highlight(true)
     } else {
       if popover.isShown {
         self.hidePopover(sender)
