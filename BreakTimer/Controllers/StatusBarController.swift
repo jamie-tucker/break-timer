@@ -16,7 +16,7 @@ class StatusBarController {
   init(_ popover: NSPopover) {
     self.popover = popover
     self.statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
-
+    self.menu = StatusMenu().menu
     self.eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: self.mouseEventHandler)
 
     if let statusBarButton = self.statusItem.button {
@@ -28,18 +28,6 @@ class StatusBarController {
     }
 
     self.popover.animates = false
-
-    let menu = NSMenu()
-    menu.addItem(
-      withTitle: "Preferences",
-      action: nil,
-      keyEquivalent: ",")
-    menu.addItem(
-      withTitle: "Quit",
-      action: #selector(AppDelegate.quit(sender:)),
-      keyEquivalent: "q")
-
-    self.menu = menu
   }
 
   @objc func onButtonPressed(sender: NSStatusBarButton) {

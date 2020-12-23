@@ -11,7 +11,6 @@ import SwiftUI
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-//  var window: NSWindow!
   var popover: NSPopover!
   var statusBar: StatusBarController?
 

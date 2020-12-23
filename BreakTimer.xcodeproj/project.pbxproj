@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		801030062593AFC600F7AC5B /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801030052593AFC600F7AC5B /* StatusMenu.swift */; };
 		809377F0258FDF3300D01761 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809377EF258FDF3300D01761 /* AppDelegate.swift */; };
 		809377F2258FDF3300D01761 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809377F1258FDF3300D01761 /* ContentView.swift */; };
 		809377F4258FDF3400D01761 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 809377F3258FDF3400D01761 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		801030052593AFC600F7AC5B /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
 		809377EC258FDF3300D01761 /* BreakTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		809377EF258FDF3300D01761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		809377F1258FDF3300D01761 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				809377FC258FDF3400D01761 /* BreakTimer.entitlements */,
 				809377F5258FDF3400D01761 /* Preview Content */,
 				80D532F12590F3B900E873D7 /* Constants.swift */,
+				801030052593AFC600F7AC5B /* StatusMenu.swift */,
 			);
 			path = BreakTimer;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				809377F2258FDF3300D01761 /* ContentView.swift in Sources */,
 				80FF93622591657C008C4C40 /* EventMonitor.swift in Sources */,
 				80D53339259158ED00E873D7 /* StatusBarController.swift in Sources */,
+				801030062593AFC600F7AC5B /* StatusMenu.swift in Sources */,
 				80E3E9942591758800AC09FF /* MainViewController.swift in Sources */,
 				809377F0258FDF3300D01761 /* AppDelegate.swift in Sources */,
 				80D532F22590F3B900E873D7 /* Constants.swift in Sources */,
