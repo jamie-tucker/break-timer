@@ -34,5 +34,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   @objc func quit(sender: AnyObject) {
     NSApp.terminate(self)
   }
-
 }

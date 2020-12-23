@@ -7,7 +7,7 @@
 
 import Cocoa
 
-struct StatusMenu {
+class StatusMenu {
 
   // MARK: - Properties
 
@@ -20,6 +20,8 @@ struct StatusMenu {
       withTitle: "Preferences",
       action: nil,
       keyEquivalent: ",")
+
+    menu.addItem(NSMenuItem.separator())
 
     menu.addItem(
       withTitle: "Quit",
