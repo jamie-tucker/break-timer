@@ -24,13 +24,15 @@ class StatusBarController {
     if let statusBarButton = statusItem.button {
       statusBarButton.image = NSImage(named: "StatusBarIcon")
       statusBarButton.image?.isTemplate = true
-      statusBarButton.action = #selector(onButtonPressed(sender:))
+      statusBarButton.action = #selector(onButtonPressed(_:))
       statusBarButton.sendAction(on: [.rightMouseUp, .leftMouseUp])
       statusBarButton.target = self
+      statusBarButton.title = "25:00"
+      statusBarButton.imagePosition = .imageLeft
     }
   }
 
-  @objc func onButtonPressed(sender: NSStatusBarButton) {
+  @objc func onButtonPressed(_ sender: AnyObject) {
     let event = NSApp.currentEvent!
 
     switch (event.type, event.modifierFlags.contains(.control)) {

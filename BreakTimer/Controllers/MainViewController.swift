@@ -8,7 +8,5 @@
 import SwiftUI
 
 class MainViewController: NSViewController {
-  override func viewDidAppear() {
-    print("onDidAppear")
-  }
+
 }
