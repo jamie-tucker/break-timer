@@ -1,5 +1,5 @@
 //
-//  Button.swift
+//  CustomButton.swift
 //  BreakTimer
 //
 //  Created by Jamie Tucker on 2020-12-29.
@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct Button: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+struct FilledButton: ButtonStyle {
+  var enabled: Bool = true
 
-struct Button_Previews: PreviewProvider {
-    static var previews: some View {
-        Button()
-    }
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .foregroundColor(!configuration.isPressed && enabled ? .white : .white)
+      .padding(10)
+      .background(!configuration.isPressed && enabled ? Color.accentColor : .gray)
+      .cornerRadius(8)
+      .disabled(!enabled)
+  }
 }

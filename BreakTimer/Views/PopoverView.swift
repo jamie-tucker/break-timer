@@ -17,14 +17,30 @@ struct PopoverView: View {
         Button(action: timerButton) {
           if timer.isPaused || timer.isStopped {
             Text("Start")
+              .fontWeight(.semibold)
+              .font(.title)
           } else {
             Text("Pause")
+              .fontWeight(.semibold)
+              .font(.title)
           }
-        }.fixedSize()
+        }
+        .buttonStyle(FilledButton())
+//          }
+//        }
 
-        Button("Reset", action: {
-          timer.resetTimer()
-        })
+        Button(action: timer.resetTimer) {
+          if timer.isPaused || timer.isStopped {
+            Text("Reset")
+              .fontWeight(.semibold)
+              .font(.title)
+          } else {
+            Text("Stop")
+              .fontWeight(.semibold)
+              .font(.title)
+          }
+        }
+        .buttonStyle(FilledButton(enabled: !timer.isStopped))
       }
     }.frame(maxWidth: .infinity, maxHeight: .infinity)
   }
