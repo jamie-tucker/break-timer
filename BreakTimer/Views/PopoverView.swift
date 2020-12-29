@@ -8,34 +8,40 @@
 import SwiftUI
 
 struct PopoverView: View {
-  @State private var isPlaying = false
+  @ObservedObject var timer: BTimer
 
   var body: some View {
     VStack {
-      Text("25:00")
+      Text(timer.timeRemaining.toMinuteTimer())
       HStack {
-        Button(action: self.playToggle) {
-          if isPlaying {
-            Text("Pause")
-          } else {
+        Button(action: timerButton) {
+          if timer.isPaused || timer.isStopped {
             Text("Start")
+          } else {
+            Text("Pause")
           }
         }.fixedSize()
 
         Button("Reset", action: {
-          self.isPlaying = false
+          timer.resetTimer()
         })
       }
     }.frame(maxWidth: .infinity, maxHeight: .infinity)
   }
 
-  func playToggle() {
-    isPlaying.toggle()
+  func timerButton() {
+    if timer.isStopped {
+      timer.startTimer()
+    } else if timer.isPaused {
+      timer.resumeTimer()
+    } else {
+      timer.pauseTimer()
+    }
   }
 }
 
 struct PopoverView_Previews: PreviewProvider {
   static var previews: some View {
-    PopoverView()
+    PopoverView(timer: BTimer())
   }
 }

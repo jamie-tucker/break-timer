@@ -6,30 +6,35 @@
 //
 
 import SwiftUI
+import SwiftDate
 
-class StatusBarController {
+class StatusBarController: BTimerProtocol {
   private var popover: NSPopover
   private var statusItem: NSStatusItem
+  private var statusBarButton: NSButton!
   private var menu: NSMenu!
   private var eventMonitor: EventMonitor?
 
   init(_ popover: NSPopover) {
     self.popover = popover
-    self.statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
+    self.statusItem = NSStatusBar.system.statusItem(withLength: 70)
+    self.statusBarButton = statusItem.button
     self.menu = StatusMenu().menu
     self.eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler)
 
+    let appDelegate = NSApp.delegate as? AppDelegate
+    let timer = appDelegate?.mainTimer
+    timer?.delegate = self
+
     popover.animates = false
 
-    if let statusBarButton = statusItem.button {
-      statusBarButton.image = NSImage(named: "StatusBarIcon")
-      statusBarButton.image?.isTemplate = true
-      statusBarButton.action = #selector(onButtonPressed(_:))
-      statusBarButton.sendAction(on: [.rightMouseUp, .leftMouseUp])
-      statusBarButton.target = self
-      statusBarButton.title = "25:00"
-      statusBarButton.imagePosition = .imageLeft
-    }
+    statusBarButton.image = NSImage(named: "StatusBarIcon")
+    statusBarButton.image?.isTemplate = true
+    statusBarButton.action = #selector(onButtonPressed(_:))
+    statusBarButton.sendAction(on: [.rightMouseUp, .leftMouseUp])
+    statusBarButton.target = self
+    statusBarButton.title = timer?.startingDuration.toMinuteTimer() ?? ""
+    statusBarButton.imagePosition = .imageLeft
   }
 
   @objc func onButtonPressed(_ sender: AnyObject) {
@@ -65,5 +70,13 @@ class StatusBarController {
     if popover.isShown {
       hidePopover(event!)
     }
+  }
+
+  func timeRemaining(_ timer: BTimer, timeRemaining: TimeInterval) {
+    statusBarButton?.title = timeRemaining.toMinuteTimer()
+  }
+
+  func timerHasFinished(_ timer: BTimer) {
+    statusBarButton?.title = timer.startingDuration.toMinuteTimer()
   }
 }
