@@ -10,7 +10,7 @@
 		801030062593AFC600F7AC5B /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801030052593AFC600F7AC5B /* StatusMenu.swift */; };
 		805F88BA2597CA1500FBE9AF /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F88B92597CA1500FBE9AF /* PreferencesView.swift */; };
 		805F88BF2597CA8400FBE9AF /* BTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F88BE2597CA8400FBE9AF /* BTimer.swift */; };
-		805F88CA2597DC8900FBE9AF /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F88C92597DC8900FBE9AF /* PopoverViewController.swift */; };
+		806758FA259BC61D00316932 /* TimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806758F9259BC61D00316932 /* TimeIntervalExtensions.swift */; };
 		809377F0258FDF3300D01761 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809377EF258FDF3300D01761 /* AppDelegate.swift */; };
 		809377F2258FDF3300D01761 /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809377F1258FDF3300D01761 /* PopoverView.swift */; };
 		809377F4258FDF3400D01761 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 809377F3258FDF3400D01761 /* Assets.xcassets */; };
@@ -21,7 +21,6 @@
 		80D532E72590EF0600E873D7 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D532E62590EF0600E873D7 /* SwiftDate */; };
 		80D532F22590F3B900E873D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D532F12590F3B900E873D7 /* Constants.swift */; };
 		80D53339259158ED00E873D7 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D53338259158ED00E873D7 /* StatusBarController.swift */; };
-		80E3E9942591758800AC09FF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E3E9932591758800AC09FF /* MainViewController.swift */; };
 		80FF93622591657C008C4C40 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FF93612591657C008C4C40 /* EventMonitor.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,7 @@
 		801030052593AFC600F7AC5B /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
 		805F88B92597CA1500FBE9AF /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesView.swift; path = BreakTimer/Views/PreferencesView.swift; sourceTree = SOURCE_ROOT; };
 		805F88BE2597CA8400FBE9AF /* BTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTimer.swift; sourceTree = "<group>"; };
-		805F88C92597DC8900FBE9AF /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		806758F9259BC61D00316932 /* TimeIntervalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensions.swift; sourceTree = "<group>"; };
 		809377EC258FDF3300D01761 /* BreakTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		809377EF258FDF3300D01761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		809377F1258FDF3300D01761 /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
@@ -63,7 +62,6 @@
 		80937812258FDF3400D01761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80D532F12590F3B900E873D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		80D53338259158ED00E873D7 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
-		80E3E9932591758800AC09FF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		80FF93612591657C008C4C40 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,8 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				80D53338259158ED00E873D7 /* StatusBarController.swift */,
-				80E3E9932591758800AC09FF /* MainViewController.swift */,
-				805F88C92597DC8900FBE9AF /* PopoverViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -205,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				80FF93612591657C008C4C40 /* EventMonitor.swift */,
+				806758F9259BC61D00316932 /* TimeIntervalExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -368,11 +365,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				809377F2258FDF3300D01761 /* PopoverView.swift in Sources */,
+				806758FA259BC61D00316932 /* TimeIntervalExtensions.swift in Sources */,
 				80FF93622591657C008C4C40 /* EventMonitor.swift in Sources */,
-				805F88CA2597DC8900FBE9AF /* PopoverViewController.swift in Sources */,
 				80D53339259158ED00E873D7 /* StatusBarController.swift in Sources */,
 				801030062593AFC600F7AC5B /* StatusMenu.swift in Sources */,
-				80E3E9942591758800AC09FF /* MainViewController.swift in Sources */,
 				809377F0258FDF3300D01761 /* AppDelegate.swift in Sources */,
 				805F88BF2597CA8400FBE9AF /* BTimer.swift in Sources */,
 				805F88BA2597CA1500FBE9AF /* PreferencesView.swift in Sources */,
