@@ -50,6 +50,7 @@ class StatusBarController: BTimerProtocol {
         hidePopover(sender)
       } else {
         showPopover(sender)
+        popover.contentViewController?.view.window?.becomeKey()
       }
     }
   }
