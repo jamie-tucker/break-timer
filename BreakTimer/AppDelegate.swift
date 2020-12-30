@@ -10,18 +10,17 @@ import SwiftUI
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
   var popover: NSPopover!
   var statusBar: StatusBarController?
+  var mainTimer: BTimer = BTimer()
 
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
-    // Create the SwiftUI view that provides the window contents.
-    let contentView = ContentView()
+  func applicationDidFinishLaunching(_: Notification) {
+    let popoverView = PopoverView(timer: mainTimer)
 
     let popover = NSPopover()
     popover.contentSize = NSSize(width: 360.0, height: 360.0)
     popover.behavior = .transient
-    popover.contentViewController = NSHostingController(rootView: contentView)
+    popover.contentViewController = NSHostingController(rootView: popoverView)
     self.popover = popover
 
     self.statusBar = StatusBarController.init(self.popover)
