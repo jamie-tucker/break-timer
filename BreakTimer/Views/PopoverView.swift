@@ -11,9 +11,12 @@ struct PopoverView: View {
   @ObservedObject var timer: BTimer
 
   var body: some View {
-    VStack {
+    VStack(spacing: 30) {
       Text(timer.timeRemaining.toMinuteTimer())
-      HStack {
+        .fontWeight(.semibold)
+        .font(.largeTitle)
+
+      HStack(spacing: 5) {
         Button(action: timerButton) {
           if timer.isPaused || timer.isStopped {
             Text("Start")
@@ -26,8 +29,6 @@ struct PopoverView: View {
           }
         }
         .buttonStyle(FilledButton())
-//          }
-//        }
 
         Button(action: timer.resetTimer) {
           if timer.isPaused || timer.isStopped {
@@ -42,7 +43,8 @@ struct PopoverView: View {
         }
         .buttonStyle(FilledButton(enabled: !timer.isStopped))
       }
-    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
   }
 
   func timerButton() {

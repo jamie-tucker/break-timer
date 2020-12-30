@@ -78,6 +78,6 @@ class StatusBarController: BTimerProtocol {
   }
 
   func timerHasFinished(_ timer: BTimer) {
-    statusBarButton?.title = timer.startingDuration.toMinuteTimer()
+    NSApp.sendAction(#selector(AppDelegate.openAlarmWindow), to: nil, from: nil)
   }
 }

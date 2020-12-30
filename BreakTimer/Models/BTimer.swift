@@ -17,7 +17,7 @@ class BTimer: ObservableObject {
   weak var delegate: BTimerProtocol?
 
   var startingDuration: TimeInterval {
-    return 120 * 60 // TODO: Replace with a setting
+    return 5 // * 60 // TODO: Replace with a setting
   }
 
   var isStopped: Bool {
@@ -30,8 +30,8 @@ class BTimer: ObservableObject {
 
   init() {
     // TODO: Replace with a setting
-    timeRemaining = 120 * 60
-    duration = 120 * 60
+    timeRemaining = 5 //* 60
+    duration = 5 //* 60
   }
 
   func startTimer() {
@@ -90,7 +90,6 @@ class BTimer: ObservableObject {
 
     if secondsRemaining <= 0 {
       resetTimer()
-      delegate?.timeRemaining(self, timeRemaining: 0)
       delegate?.timerHasFinished(self)
     } else {
       delegate?.timeRemaining(self, timeRemaining: secondsRemaining)

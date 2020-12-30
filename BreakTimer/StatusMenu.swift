@@ -18,14 +18,14 @@ class StatusMenu {
   init() {
     menu.addItem(
       withTitle: "Preferences",
-      action: nil,
+      action: #selector(AppDelegate.openPreferenceWindow),
       keyEquivalent: ",")
 
-    menu.addItem(NSMenuItem.separator())
+//    menu.addItem(NSMenuItem.separator())
 
     menu.addItem(
       withTitle: "Quit",
-      action: #selector(AppDelegate.quit(sender:)),
+      action: #selector(AppDelegate.quit),
       keyEquivalent: "q")
   }
 }
