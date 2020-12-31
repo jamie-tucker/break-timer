@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct AlarmView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  @ObservedObject var timer: BTimer
+
+  var body: some View {
+    VStack {
+      Text(timer.timeRemaining.toMinuteTimer())
+        .font(.title)
+        .fontWeight(.semibold)
     }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+  }
 }
 
 struct AlarmView_Previews: PreviewProvider {
-    static var previews: some View {
-        AlarmView()
-    }
+  static var previews: some View {
+    AlarmView(timer: BTimer(durationMinutes: 5))
+  }
 }

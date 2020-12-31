@@ -11,13 +11,13 @@ import SwiftUI
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
   var popover: NSPopover!
-  var alarmWindow: NSWindow!
-  var preferenceWindow: NSWindow!
+  var preferencesWindow: NSWindow!
 
   var statusBar: StatusBarController?
-  var mainTimer: BTimer = BTimer()
+  var alarmController: AlarmController?
 
   func applicationDidFinishLaunching(_: Notification) {
+    let mainTimer = BTimer(durationMinutes: 5 / 60.0) // TODO: Get from a setting
     let popoverView = PopoverView(timer: mainTimer)
 
     let popover = NSPopover()
@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     popover.contentViewController = NSHostingController(rootView: popoverView)
     self.popover = popover
 
-    self.statusBar = StatusBarController.init(self.popover)
+    self.statusBar = StatusBarController.init(self.popover, timer: mainTimer)
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
@@ -34,31 +34,49 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   @objc func openAlarmWindow() {
-    openWindow(&alarmWindow, view: AlarmView(), title: "Take a Break")
+    if alarmController == nil {
+      let screenFrame = NSScreen.main?.frame
+      let window = NSWindow(
+        contentRect: NSRect(
+          x: 0,
+          y: 0,
+          width: CGFloat((screenFrame?.width ?? 1920) / 2.0),
+          height: CGFloat((screenFrame?.height ?? 1080) / 2.0)
+        ),
+        styleMask: [.fullSizeContentView],
+        backing: .buffered,
+        defer: false)
+      window.center()
+      window.setFrameAutosaveName("Take a break")
+      window.isReleasedWhenClosed = false
+
+      alarmController = AlarmController.init(window)
+    }
+
+    alarmController?.openWindow()
   }
 
-  @objc func openPreferenceWindow() {
-    openWindow(&preferenceWindow, view: PreferencesView(), title: "Preferences")
+  @objc func openPreferencesWindow() {
+    if preferencesWindow == nil {
+      let view = PreferencesView()
+      let window = NSWindow(
+        contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
+        styleMask: [.titled, .closable, .fullSizeContentView],
+        backing: .buffered,
+        defer: false)
+      window.center()
+      window.setFrameAutosaveName("Preferences")
+      window.isReleasedWhenClosed = false
+      window.contentView = NSHostingView(rootView: view)
+
+      preferencesWindow = window
+    }
+
+    NSApp.activate(ignoringOtherApps: true)
+    preferencesWindow.makeKeyAndOrderFront(self)
   }
 
   @objc func quit() {
     NSApp.terminate(self)
-  }
-
-  private func openWindow<T>(_ window: inout NSWindow!, view: T, title: String) where T: View {
-    if window == nil {
-      window = NSWindow(
-        contentRect: NSRect(x: 20, y: 20, width: 480, height: 300),
-        styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-        backing: .buffered,
-        defer: false)
-      window.center()
-      window.setFrameAutosaveName(title)
-      window.isReleasedWhenClosed = false
-      window.contentView = NSHostingView(rootView: view)
-    }
-
-    NSApp.activate(ignoringOtherApps: true)
-    window.makeKeyAndOrderFront(self)
   }
 }

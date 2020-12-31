@@ -41,10 +41,21 @@ struct PopoverView: View {
               .font(.title)
           }
         }
-        .buttonStyle(FilledButton(enabled: !timer.isStopped))
+        .buttonStyle(FilledButton(enabled: !timer.isStopped || timer.timeRemaining != timer.startingDuration))
+
+        Button(action: addTime) {
+          Text("+1")
+            .font(.title)
+            .fontWeight(.semibold)
+        }
+        .buttonStyle(FilledButton())
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
+  }
+
+  func addTime() {
+    timer.addTime(60)
   }
 
   func timerButton() {
@@ -60,6 +71,6 @@ struct PopoverView: View {
 
 struct PopoverView_Previews: PreviewProvider {
   static var previews: some View {
-    PopoverView(timer: BTimer())
+    PopoverView(timer: BTimer(durationMinutes: 0.1))
   }
 }

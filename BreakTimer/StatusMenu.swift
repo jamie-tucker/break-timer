@@ -18,7 +18,7 @@ class StatusMenu {
   init() {
     menu.addItem(
       withTitle: "Preferences",
-      action: #selector(AppDelegate.openPreferenceWindow),
+      action: #selector(AppDelegate.openPreferencesWindow),
       keyEquivalent: ",")
 
 //    menu.addItem(NSMenuItem.separator())

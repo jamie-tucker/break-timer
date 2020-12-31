@@ -20,6 +20,7 @@
 		80937806258FDF3400D01761 /* BreakTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80937805258FDF3400D01761 /* BreakTimerTests.swift */; };
 		80937811258FDF3400D01761 /* BreakTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80937810258FDF3400D01761 /* BreakTimerUITests.swift */; };
 		80ABC02A259D179D00B68883 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC029259D179D00B68883 /* AlarmView.swift */; };
+		80ABC03B259D399200B68883 /* AlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC03A259D399200B68883 /* AlarmController.swift */; };
 		80D532E72590EF0600E873D7 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D532E62590EF0600E873D7 /* SwiftDate */; };
 		80D532F22590F3B900E873D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D532F12590F3B900E873D7 /* Constants.swift */; };
 		80D53339259158ED00E873D7 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D53338259158ED00E873D7 /* StatusBarController.swift */; };
@@ -64,6 +65,7 @@
 		80937810258FDF3400D01761 /* BreakTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakTimerUITests.swift; sourceTree = "<group>"; };
 		80937812258FDF3400D01761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80ABC029259D179D00B68883 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+		80ABC03A259D399200B68883 /* AlarmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmController.swift; sourceTree = "<group>"; };
 		80D532F12590F3B900E873D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		80D53338259158ED00E873D7 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		80FF93612591657C008C4C40 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				80D53338259158ED00E873D7 /* StatusBarController.swift */,
+				80ABC03A259D399200B68883 /* AlarmController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				80FF93622591657C008C4C40 /* EventMonitor.swift in Sources */,
 				80D53339259158ED00E873D7 /* StatusBarController.swift in Sources */,
 				801030062593AFC600F7AC5B /* StatusMenu.swift in Sources */,
+				80ABC03B259D399200B68883 /* AlarmController.swift in Sources */,
 				806758FF259BD32A00316932 /* Button.swift in Sources */,
 				809377F0258FDF3300D01761 /* AppDelegate.swift in Sources */,
 				80ABC02A259D179D00B68883 /* AlarmView.swift in Sources */,

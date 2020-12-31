@@ -10,15 +10,12 @@ import Foundation
 class BTimer: ObservableObject {
   @Published public var timeRemaining: TimeInterval
 
+  let startingDuration: TimeInterval
   var timer: Timer?
   var startTime: Date?
   var duration: TimeInterval
   var elapsedTime: TimeInterval = 0
   weak var delegate: BTimerProtocol?
-
-  var startingDuration: TimeInterval {
-    return 5 // * 60 // TODO: Replace with a setting
-  }
 
   var isStopped: Bool {
     return timer == nil && elapsedTime == 0
@@ -28,10 +25,10 @@ class BTimer: ObservableObject {
     return timer == nil && elapsedTime > 0
   }
 
-  init() {
-    // TODO: Replace with a setting
-    timeRemaining = 5 //* 60
-    duration = 5 //* 60
+  init(durationMinutes: Double) {
+    self.startingDuration = durationMinutes * 60
+    self.timeRemaining = durationMinutes * 60
+    self.duration = durationMinutes * 60
   }
 
   func startTimer() {
@@ -78,12 +75,14 @@ class BTimer: ObservableObject {
     delegate?.timeRemaining(self, timeRemaining: duration)
   }
 
-  @objc func timerAction() {
-    guard let startTime = startTime else {
-      return
-    }
+  func addTime(_ timeToAdd: Double) {
+    duration += timeToAdd
 
-    elapsedTime = -startTime.timeIntervalSinceNow
+    timerAction()
+  }
+
+  @objc private func timerAction() {
+    elapsedTime =  startTime != nil ? -startTime!.timeIntervalSinceNow : 0
 
     let secondsRemaining = (duration - elapsedTime).rounded()
     timeRemaining = secondsRemaining
