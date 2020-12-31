@@ -13,13 +13,13 @@ enum Config {
 enum PreferencesKey {
   static let BreakTimer: String = "BreakTimer"
   static let AlarmTimer: String = "AlarmTimer"
-  static let OpenOnRestart: String = "StartOnWake"
+  static let OpenOnStartup: String = "StartOnWake"
 }
 
 enum Defaults {
   static let Preferences: [String: Any] = [
     PreferencesKey.BreakTimer: 25.0,
     PreferencesKey.AlarmTimer: 5.0,
-    PreferencesKey.OpenOnRestart: true
+    PreferencesKey.OpenOnStartup: true
   ]
 }

@@ -30,14 +30,14 @@ struct Preferences {
     }
   }
 
-  static var openOnRestart: Bool! {
+  static var openOnStartup: Bool! {
     get {
-      return UserDefaults.standard.object(forKey: PreferencesKey.OpenOnRestart) as? Bool ??
-        Defaults.Preferences[PreferencesKey.OpenOnRestart] as? Bool
+      return UserDefaults.standard.object(forKey: PreferencesKey.OpenOnStartup) as? Bool ??
+        Defaults.Preferences[PreferencesKey.OpenOnStartup] as? Bool
     }
 
     set(value) {
-      UserDefaults.standard.setValue(value, forKey: PreferencesKey.OpenOnRestart)
+      UserDefaults.standard.setValue(value, forKey: PreferencesKey.OpenOnStartup)
     }
   }
 }
