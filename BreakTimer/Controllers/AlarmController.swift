@@ -14,7 +14,7 @@ class AlarmController: BTimerProtocol {
 
   init(_ window: NSWindow) {
     self.window = window
-    self.timer = BTimer(durationMinutes: 5 / 60.0) // TODO: Get from a setting
+    self.timer = BTimer(durationMinutes: Preferences.alarmTimer)
 
     timer.delegate = self
 

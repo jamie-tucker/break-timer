@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var alarmController: AlarmController?
 
   func applicationDidFinishLaunching(_: Notification) {
-    let mainTimer = BTimer(durationMinutes: 5 / 60.0) // TODO: Get from a setting
+    let mainTimer = BTimer(durationMinutes: Preferences.breakTimer)
     let popoverView = PopoverView(timer: mainTimer)
 
     let popover = NSPopover()
