@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		801030062593AFC600F7AC5B /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801030052593AFC600F7AC5B /* StatusMenu.swift */; };
+		803B079E259E4536005A9ED9 /* LauncherApp.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80F881B8259D89A1006312D9 /* LauncherApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		803B07A5259E456F005A9ED9 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803B07A4259E456F005A9ED9 /* ServiceManagement.framework */; };
+		803B07B0259E4940005A9ED9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B07AF259E4940005A9ED9 /* Constants.swift */; };
 		805F88BA2597CA1500FBE9AF /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F88B92597CA1500FBE9AF /* PreferencesView.swift */; };
 		805F88BF2597CA8400FBE9AF /* BTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F88BE2597CA8400FBE9AF /* BTimer.swift */; };
 		806758FA259BC61D00316932 /* TimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806758F9259BC61D00316932 /* TimeIntervalExtensions.swift */; };
@@ -25,6 +28,10 @@
 		80D532E72590EF0600E873D7 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D532E62590EF0600E873D7 /* SwiftDate */; };
 		80D532F22590F3B900E873D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D532F12590F3B900E873D7 /* Constants.swift */; };
 		80D53339259158ED00E873D7 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D53338259158ED00E873D7 /* StatusBarController.swift */; };
+		80F881BB259D89A1006312D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F881BA259D89A1006312D9 /* AppDelegate.swift */; };
+		80F881BF259D89A2006312D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F881BE259D89A2006312D9 /* Assets.xcassets */; };
+		80F881C2259D89A2006312D9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F881C1259D89A2006312D9 /* Preview Assets.xcassets */; };
+		80F881D0259D8DD9006312D9 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F881CF259D8DD9006312D9 /* AppState.swift */; };
 		80FF93622591657C008C4C40 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FF93612591657C008C4C40 /* EventMonitor.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,8 +52,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		803B079D259E4506005A9ED9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				803B079E259E4536005A9ED9 /* LauncherApp.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		801030052593AFC600F7AC5B /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
+		803B07A4259E456F005A9ED9 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		803B07AF259E4940005A9ED9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		805F88B92597CA1500FBE9AF /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesView.swift; path = BreakTimer/Views/PreferencesView.swift; sourceTree = SOURCE_ROOT; };
 		805F88BE2597CA8400FBE9AF /* BTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTimer.swift; sourceTree = "<group>"; };
 		806758F9259BC61D00316932 /* TimeIntervalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensions.swift; sourceTree = "<group>"; };
@@ -70,6 +92,13 @@
 		80ABC03F259D734700B68883 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		80D532F12590F3B900E873D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		80D53338259158ED00E873D7 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		80F881B8259D89A1006312D9 /* LauncherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LauncherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80F881BA259D89A1006312D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		80F881BE259D89A2006312D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		80F881C1259D89A2006312D9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		80F881C6259D89A2006312D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80F881C7259D89A2006312D9 /* LauncherApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LauncherApp.entitlements; sourceTree = "<group>"; };
+		80F881CF259D8DD9006312D9 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		80FF93612591657C008C4C40 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80D532E72590EF0600E873D7 /* SwiftDate in Frameworks */,
+				803B07A5259E456F005A9ED9 /* ServiceManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,16 +126,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		80F881B5259D89A1006312D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		803B07A3259E456F005A9ED9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				803B07A4259E456F005A9ED9 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		803B07AE259E4922005A9ED9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				803B07AF259E4940005A9ED9 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		809377E3258FDF3300D01761 = {
 			isa = PBXGroup;
 			children = (
 				809377EE258FDF3300D01761 /* BreakTimer */,
 				80937804258FDF3400D01761 /* BreakTimerTests */,
 				8093780F258FDF3400D01761 /* BreakTimerUITests */,
+				80F881B9259D89A1006312D9 /* LauncherApp */,
 				809377ED258FDF3300D01761 /* Products */,
+				803B07A3259E456F005A9ED9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +170,7 @@
 				809377EC258FDF3300D01761 /* BreakTimer.app */,
 				80937801258FDF3400D01761 /* BreakTimerTests.xctest */,
 				8093780C258FDF3400D01761 /* BreakTimerUITests.xctest */,
+				80F881B8259D89A1006312D9 /* LauncherApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +190,7 @@
 				809377FB258FDF3400D01761 /* Info.plist */,
 				809377FC258FDF3400D01761 /* BreakTimer.entitlements */,
 				809377F5258FDF3400D01761 /* Preview Content */,
+				80F881CF259D8DD9006312D9 /* AppState.swift */,
 			);
 			path = BreakTimer;
 			sourceTree = "<group>";
@@ -209,6 +266,27 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		80F881B9259D89A1006312D9 /* LauncherApp */ = {
+			isa = PBXGroup;
+			children = (
+				803B07AE259E4922005A9ED9 /* Utilities */,
+				80F881BA259D89A1006312D9 /* AppDelegate.swift */,
+				80F881BE259D89A2006312D9 /* Assets.xcassets */,
+				80F881C6259D89A2006312D9 /* Info.plist */,
+				80F881C7259D89A2006312D9 /* LauncherApp.entitlements */,
+				80F881C0259D89A2006312D9 /* Preview Content */,
+			);
+			path = LauncherApp;
+			sourceTree = "<group>";
+		};
+		80F881C0259D89A2006312D9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				80F881C1259D89A2006312D9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		80FF9366259166FC008C4C40 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +307,7 @@
 				809377E8258FDF3300D01761 /* Sources */,
 				809377E9258FDF3300D01761 /* Frameworks */,
 				809377EA258FDF3300D01761 /* Resources */,
+				803B079D259E4506005A9ED9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -278,13 +357,30 @@
 			productReference = 8093780C258FDF3400D01761 /* BreakTimerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		80F881B7259D89A1006312D9 /* LauncherApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80F881CA259D89A2006312D9 /* Build configuration list for PBXNativeTarget "LauncherApp" */;
+			buildPhases = (
+				80F881B4259D89A1006312D9 /* Sources */,
+				80F881B5259D89A1006312D9 /* Frameworks */,
+				80F881B6259D89A1006312D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LauncherApp;
+			productName = LauncherApp;
+			productReference = 80F881B8259D89A1006312D9 /* LauncherApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		809377E4258FDF3300D01761 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					809377EB258FDF3300D01761 = {
@@ -297,6 +393,9 @@
 					8093780B258FDF3400D01761 = {
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = 809377EB258FDF3300D01761;
+					};
+					80F881B7259D89A1006312D9 = {
+						CreatedOnToolsVersion = 12.3;
 					};
 				};
 			};
@@ -319,6 +418,7 @@
 				809377EB258FDF3300D01761 /* BreakTimer */,
 				80937800258FDF3400D01761 /* BreakTimerTests */,
 				8093780B258FDF3400D01761 /* BreakTimerUITests */,
+				80F881B7259D89A1006312D9 /* LauncherApp */,
 			);
 		};
 /* End PBXProject section */
@@ -345,6 +445,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80F881B6259D89A1006312D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80F881C2259D89A2006312D9 /* Preview Assets.xcassets in Resources */,
+				80F881BF259D89A2006312D9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +494,7 @@
 				806758FF259BD32A00316932 /* Button.swift in Sources */,
 				809377F0258FDF3300D01761 /* AppDelegate.swift in Sources */,
 				80ABC02A259D179D00B68883 /* AlarmView.swift in Sources */,
+				80F881D0259D8DD9006312D9 /* AppState.swift in Sources */,
 				805F88BF2597CA8400FBE9AF /* BTimer.swift in Sources */,
 				805F88BA2597CA1500FBE9AF /* PreferencesView.swift in Sources */,
 				80ABC040259D734700B68883 /* Preferences.swift in Sources */,
@@ -405,6 +515,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				80937811258FDF3400D01761 /* BreakTimerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80F881B4259D89A1006312D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80F881BB259D89A1006312D9 /* AppDelegate.swift in Sources */,
+				803B07B0259E4940005A9ED9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,7 +690,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = Tucker.BreakTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tucker.break-timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -595,7 +714,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = Tucker.BreakTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tucker.break-timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -685,6 +804,56 @@
 			};
 			name = Release;
 		};
+		80F881C8259D89A2006312D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LauncherApp/LauncherApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"LauncherApp/Preview Content\"";
+				DEVELOPMENT_TEAM = V65A3B8DUY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = LauncherApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tucker.break-timer-launcher";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		80F881C9259D89A2006312D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LauncherApp/LauncherApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"LauncherApp/Preview Content\"";
+				DEVELOPMENT_TEAM = V65A3B8DUY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = LauncherApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tucker.break-timer-launcher";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -720,6 +889,15 @@
 			buildConfigurations = (
 				8093781C258FDF3400D01761 /* Debug */,
 				8093781D258FDF3400D01761 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80F881CA259D89A2006312D9 /* Build configuration list for PBXNativeTarget "LauncherApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80F881C8259D89A2006312D9 /* Debug */,
+				80F881C9259D89A2006312D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

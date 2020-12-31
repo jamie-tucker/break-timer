@@ -6,34 +6,47 @@
 //
 
 import Cocoa
-import SwiftUI
+
+extension Notification.Name {
+  static let killLauncher = Notification.Name("killLauncher")
+}
 
 @main
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject {
+  @objc func terminate() {
+    NSApp.terminate(nil)
+  }
+}
 
-  var window: NSWindow!
-
-
+extension AppDelegate: NSApplicationDelegate {
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    // Create the SwiftUI view that provides the window contents.
-    let contentView = ContentView()
+    let runningApps = NSWorkspace.shared.runningApplications
+    let isRunning = !runningApps.filter { $0.bundleIdentifier == Config.MainAppIdentifier }.isEmpty
 
-    // Create the window and set the content view.
-    window = NSWindow(
-        contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-        styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-        backing: .buffered, defer: false)
-    window.isReleasedWhenClosed = false
-    window.center()
-    window.setFrameAutosaveName("Main Window")
-    window.contentView = NSHostingView(rootView: contentView)
-    window.makeKeyAndOrderFront(nil)
+    if isRunning {
+      DistributedNotificationCenter.default().addObserver(
+        self,
+        selector: #selector(self.terminate),
+        name: .killLauncher,
+        object: Config.MainAppIdentifier)
+
+      let path = Bundle.main.bundlePath as NSString
+      var components = path.pathComponents
+      components.removeLast()
+      components.removeLast()
+      components.removeLast()
+      components.append("MacOS")
+      components.append(Config.MainApplicationName)
+
+      let newPath = NSString.path(withComponents: components)
+
+      NSWorkspace.shared.launchApplication(newPath)
+    } else {
+      self.terminate()
+    }
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
     // Insert code here to tear down your application
   }
-
-
 }
-

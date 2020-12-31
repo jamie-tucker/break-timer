@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ServiceManagement
 
 struct Preferences {
   static var breakTimer: Double! {

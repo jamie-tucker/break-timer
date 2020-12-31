@@ -7,6 +7,11 @@
 
 import Cocoa
 import SwiftUI
+import ServiceManagement
+
+extension Notification.Name {
+  static let killLauncher = Notification.Name("killLauncher")
+}
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -17,6 +22,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var alarmController: AlarmController?
 
   func applicationDidFinishLaunching(_: Notification) {
+    let runningApps = NSWorkspace.shared.runningApplications
+    let isRunning = !runningApps.filter { $0.bundleIdentifier == Config.LauncherAppID }.isEmpty
+
+    SMLoginItemSetEnabled(Config.LauncherAppID as CFString, Preferences.openOnStartup)
+
+    if isRunning {
+      DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
+    }
+
+    initializeStatusBar()
+  }
+
+  func applicationWillTerminate(_ aNotification: Notification) {
+    // Insert code here to tear down your application
+  }
+
+  private func initializeStatusBar() {
     let mainTimer = BTimer(durationMinutes: Preferences.breakTimer)
     let popoverView = PopoverView(timer: mainTimer)
 
@@ -27,10 +49,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.popover = popover
 
     self.statusBar = StatusBarController.init(self.popover, timer: mainTimer)
-  }
-
-  func applicationWillTerminate(_ aNotification: Notification) {
-    // Insert code here to tear down your application
   }
 
   @objc func openAlarmWindow() {
@@ -77,6 +95,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   @objc func quit() {
-    NSApp.terminate(self)
+    NSApp.terminate(nil)
   }
 }
