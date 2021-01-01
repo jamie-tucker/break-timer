@@ -10,7 +10,7 @@ import Foundation
 class BTimer: ObservableObject {
   @Published public var timeRemaining: TimeInterval
 
-  let startingDuration: TimeInterval
+  var startingDuration: TimeInterval
   var timer: Timer?
   var startTime: Date?
   var duration: TimeInterval
@@ -29,6 +29,14 @@ class BTimer: ObservableObject {
     self.startingDuration = durationMinutes * 60
     self.timeRemaining = durationMinutes * 60
     self.duration = durationMinutes * 60
+  }
+
+  func setTimer(durationMinutes: Double) {
+    self.startingDuration = durationMinutes * 60
+    self.timeRemaining = durationMinutes * 60
+    self.duration = durationMinutes * 60
+
+    resetTimer()
   }
 
   func startTimer() {
@@ -99,4 +107,5 @@ class BTimer: ObservableObject {
 protocol BTimerProtocol: AnyObject {
   func timeRemaining(_ timer: BTimer, timeRemaining: TimeInterval)
   func timerHasFinished(_ timer: BTimer)
+  func updateTimer()
 }

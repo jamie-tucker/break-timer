@@ -15,8 +15,25 @@ struct AlarmView: View {
       Text(timer.timeRemaining.toMinuteTimer())
         .font(.title)
         .fontWeight(.semibold)
+      if timer.isStopped {
+        HStack {
+          Button("Close", action: onClose)
+            .buttonStyle(FilledButton())
+          Button("Restart", action: onRestart)
+            .buttonStyle(FilledButton())
+        }
+      }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
+  }
+
+  func onClose() {
+    NSApp.sendAction(#selector(AppDelegate.closeAlarmWindow), to: nil, from: nil)
+  }
+
+  func onRestart() {
+    NSApp.sendAction(#selector(AppDelegate.closeAlarmWindow), to: nil, from: nil)
+    NSApp.sendAction(#selector(AppDelegate.restartTimer), to: nil, from: nil)
   }
 }
 

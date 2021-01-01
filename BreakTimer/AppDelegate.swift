@@ -17,7 +17,7 @@ extension Notification.Name {
 class AppDelegate: NSObject, NSApplicationDelegate {
   var popover: NSPopover!
   var preferencesWindow: NSWindow!
-
+  var mainTimer = BTimer(durationMinutes: Preferences.breakTimer)
   var statusBar: StatusBarController?
   var alarmController: AlarmController?
 
@@ -39,7 +39,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   private func initializeStatusBar() {
-    let mainTimer = BTimer(durationMinutes: Preferences.breakTimer)
     let popoverView = PopoverView(timer: mainTimer)
 
     let popover = NSPopover()
@@ -49,6 +48,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.popover = popover
 
     self.statusBar = StatusBarController.init(self.popover, timer: mainTimer)
+  }
+
+  @objc func updateTimer() {
+    self.statusBar?.updateTimer()
+    self.alarmController?.updateTimer()
   }
 
   @objc func openAlarmWindow() {
@@ -74,9 +78,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     alarmController?.openWindow()
   }
 
+  @objc func restartTimer() {
+    mainTimer.startTimer()
+  }
+
+  @objc func closeAlarmWindow() {
+    alarmController?.closeWindow()
+  }
+
   @objc func openPreferencesWindow() {
     if preferencesWindow == nil {
-      let view = PreferencesView()
       let window = NSWindow(
         contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
         styleMask: [.titled, .closable, .fullSizeContentView],
@@ -85,10 +96,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       window.center()
       window.setFrameAutosaveName("Preferences")
       window.isReleasedWhenClosed = false
-      window.contentView = NSHostingView(rootView: view)
 
       preferencesWindow = window
     }
+    let view = PreferencesView()
+    preferencesWindow.contentView = NSHostingView(rootView: view)
 
     NSApp.activate(ignoringOtherApps: true)
     preferencesWindow.makeKeyAndOrderFront(self)

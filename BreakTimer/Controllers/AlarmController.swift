@@ -16,7 +16,7 @@ class AlarmController: BTimerProtocol {
     self.window = window
     self.timer = BTimer(durationMinutes: Preferences.alarmTimer)
 
-    timer.delegate = self
+    self.timer.delegate = self
 
     let view = AlarmView(timer: timer)
     window.contentView = NSHostingView(rootView: view)
@@ -32,11 +32,17 @@ class AlarmController: BTimerProtocol {
     window.close()
   }
 
+  func updateTimer() {
+    timer.setTimer(durationMinutes: Preferences.alarmTimer)
+  }
+
   func timeRemaining(_ timer: BTimer, timeRemaining: TimeInterval) {
-    window.orderFrontRegardless()
+    if !timer.isStopped {
+      window.orderFrontRegardless()
+    }
   }
 
   func timerHasFinished(_ timer: BTimer) {
-    closeWindow()
+//    closeWindow()
   }
 }

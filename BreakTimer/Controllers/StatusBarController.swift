@@ -13,6 +13,7 @@ class StatusBarController: BTimerProtocol {
   private var statusItem: NSStatusItem
   private var statusBarButton: NSButton!
   private var menu: NSMenu!
+  private var timer: BTimer
   private var eventMonitor: EventMonitor?
 
   init(_ popover: NSPopover, timer: BTimer) {
@@ -20,9 +21,10 @@ class StatusBarController: BTimerProtocol {
     self.statusItem = NSStatusBar.system.statusItem(withLength: 70)
     self.statusBarButton = statusItem.button
     self.menu = StatusMenu().menu
+    self.timer = timer
     self.eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler)
 
-    timer.delegate = self
+    self.timer.delegate = self
 
     popover.animates = false
 
@@ -31,7 +33,7 @@ class StatusBarController: BTimerProtocol {
     statusBarButton.action = #selector(onButtonPressed(_:))
     statusBarButton.sendAction(on: [.rightMouseUp, .leftMouseUp])
     statusBarButton.target = self
-    statusBarButton.title = timer.startingDuration.toMinuteTimer()
+    statusBarButton.title = self.timer.startingDuration.toMinuteTimer()
     statusBarButton.imagePosition = .imageLeft
   }
 
@@ -69,6 +71,10 @@ class StatusBarController: BTimerProtocol {
     if popover.isShown {
       hidePopover(event!)
     }
+  }
+
+  func updateTimer() {
+    timer.setTimer(durationMinutes: Preferences.breakTimer)
   }
 
   func timeRemaining(_ timer: BTimer, timeRemaining: TimeInterval) {
