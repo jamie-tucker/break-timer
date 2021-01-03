@@ -25,6 +25,7 @@
 		80ABC02A259D179D00B68883 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC029259D179D00B68883 /* AlarmView.swift */; };
 		80ABC03B259D399200B68883 /* AlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC03A259D399200B68883 /* AlarmController.swift */; };
 		80ABC040259D734700B68883 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC03F259D734700B68883 /* Preferences.swift */; };
+		80CACBC725A25C20001464E1 /* GifViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CACBC625A25C20001464E1 /* GifViewer.swift */; };
 		80D532E72590EF0600E873D7 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D532E62590EF0600E873D7 /* SwiftDate */; };
 		80D532F22590F3B900E873D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D532F12590F3B900E873D7 /* Constants.swift */; };
 		80D53339259158ED00E873D7 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D53338259158ED00E873D7 /* StatusBarController.swift */; };
@@ -90,6 +91,7 @@
 		80ABC029259D179D00B68883 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		80ABC03A259D399200B68883 /* AlarmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmController.swift; sourceTree = "<group>"; };
 		80ABC03F259D734700B68883 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		80CACBC625A25C20001464E1 /* GifViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewer.swift; sourceTree = "<group>"; };
 		80D532F12590F3B900E873D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		80D53338259158ED00E873D7 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		80F881B8259D89A1006312D9 /* LauncherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LauncherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +241,7 @@
 				809377F1258FDF3300D01761 /* PopoverView.swift */,
 				806758FE259BD32A00316932 /* Button.swift */,
 				80ABC029259D179D00B68883 /* AlarmView.swift */,
+				80CACBC625A25C20001464E1 /* GifViewer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80CACBC725A25C20001464E1 /* GifViewer.swift in Sources */,
 				809377F2258FDF3300D01761 /* PopoverView.swift in Sources */,
 				806758FA259BC61D00316932 /* TimeIntervalExtensions.swift in Sources */,
 				80FF93622591657C008C4C40 /* EventMonitor.swift in Sources */,

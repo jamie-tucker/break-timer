@@ -13,8 +13,9 @@ struct PopoverView: View {
   var body: some View {
     VStack(spacing: 30) {
       Text(timer.timeRemaining.toMinuteTimer())
-        .fontWeight(.semibold)
-        .font(.largeTitle)
+        .font(.system(size: 100))
+        .fontWeight(.ultraLight)
+        .foregroundColor(.white)
 
       HStack(spacing: 5) {
         Button(action: timerButton) {
@@ -44,7 +45,14 @@ struct PopoverView: View {
         .buttonStyle(FilledButton(enabled: !timer.isStopped || timer.timeRemaining != timer.startingDuration))
 
         Button(action: addTime) {
-          Text("+1")
+          Text("+")
+            .font(.title)
+            .fontWeight(.semibold)
+        }
+        .buttonStyle(FilledButton())
+
+        Button(action: subTime) {
+          Text("-")
             .font(.title)
             .fontWeight(.semibold)
         }
@@ -56,6 +64,10 @@ struct PopoverView: View {
 
   func addTime() {
     timer.addTime(60)
+  }
+
+  func subTime() {
+    timer.addTime(-60)
   }
 
   func timerButton() {

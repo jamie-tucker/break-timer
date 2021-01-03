@@ -17,12 +17,11 @@ class AlarmController: BTimerProtocol {
     self.timer = BTimer(durationMinutes: Preferences.alarmTimer)
 
     self.timer.delegate = self
-
-    let view = AlarmView(timer: timer)
-    window.contentView = NSHostingView(rootView: view)
   }
 
   func openWindow() {
+    let view = AlarmView(timer: timer)
+    window.contentView = NSHostingView(rootView: view)
     timer.startTimer()
     NSApp.activate(ignoringOtherApps: true)
     window.makeKeyAndOrderFront(self)

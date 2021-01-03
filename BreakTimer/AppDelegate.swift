@@ -69,7 +69,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         backing: .buffered,
         defer: false)
       window.center()
-      window.setFrameAutosaveName("Take a break")
       window.isReleasedWhenClosed = false
 
       alarmController = AlarmController.init(window)
@@ -94,12 +93,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         backing: .buffered,
         defer: false)
       window.center()
-      window.setFrameAutosaveName("Preferences")
-      window.isReleasedWhenClosed = false
+      window.isReleasedWhenClosed = true
 
       preferencesWindow = window
     }
     let view = PreferencesView()
+    preferencesWindow.title = "Preferences"
     preferencesWindow.contentView = NSHostingView(rootView: view)
 
     NSApp.activate(ignoringOtherApps: true)

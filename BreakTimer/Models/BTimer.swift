@@ -85,8 +85,11 @@ class BTimer: ObservableObject {
 
   func addTime(_ timeToAdd: Double) {
     duration += timeToAdd
+    timeRemaining += timeToAdd
 
-    timerAction()
+    duration = max(duration, 0)
+    timeRemaining = max(timeRemaining, 0)
+    delegate?.timeRemaining(self, timeRemaining: timeRemaining)
   }
 
   @objc private func timerAction() {

@@ -11,20 +11,47 @@ struct AlarmView: View {
   @ObservedObject var timer: BTimer
 
   var body: some View {
-    VStack {
-      Text(timer.timeRemaining.toMinuteTimer())
-        .font(.title)
-        .fontWeight(.semibold)
-      if timer.isStopped {
+    ZStack {
+      HTMLRenderingWebViewExample()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+      HStack(alignment: .bottom, spacing: 0) {
+
+        Text(timer.timeRemaining.toMinuteTimer())
+          .font(.system(size: 100))
+          .fontWeight(.ultraLight)
+          .foregroundColor(.white)
+          .shadow(color: Color.black.opacity(0.75), radius: 3, x: 0, y: 0)
+          .offset(y: 20)
+
+        Spacer()
         HStack {
-          Button("Close", action: onClose)
+        if timer.isStopped {
+            Button(action: onRestart) {
+              Text("Start New Timer")
+                .font(.title)
+                .fontWeight(.semibold)
+            }
             .buttonStyle(FilledButton())
-          Button("Restart", action: onRestart)
+
+            Button(action: onClose) {
+              Text("Dismiss")
+                .font(.title)
+                .fontWeight(.semibold)
+            }
             .buttonStyle(FilledButton())
+          }
         }
       }
+      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+      .padding(30)
+      .overlay(
+        Rectangle()
+          .stroke(Color.white, lineWidth: 3)
+          .padding(10)
+      )
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
+
   }
 
   func onClose() {
