@@ -14,6 +14,7 @@ struct AlarmView: View {
     ZStack {
       HTMLRenderingWebViewExample()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+
       HStack(alignment: .bottom, spacing: 0) {
 
         Text(timer.timeRemaining.toMinuteTimer())
@@ -24,8 +25,9 @@ struct AlarmView: View {
           .offset(y: 20)
 
         Spacer()
+
         HStack {
-        if timer.isStopped {
+          if timer.isStopped {
             Button(action: onRestart) {
               Text("Start New Timer")
                 .font(.title)
@@ -39,6 +41,13 @@ struct AlarmView: View {
                 .fontWeight(.semibold)
             }
             .buttonStyle(FilledButton())
+
+          } else {
+            Text("take a break...")
+              .font(.largeTitle)
+              .fontWeight(.semibold)
+              .offset(y: 4)
+              .shadow(color: Color.black.opacity(0.75), radius: 3, x: 0, y: 0)
           }
         }
       }

@@ -50,7 +50,7 @@ struct HTMLRenderingWebViewExample: View {
   }
 
   func assetAsString() -> String? {
-    let randomValue = Int.random(in: 1...7)
+    let randomValue = Int.random(in: 1...12)
     let asset = NSDataAsset(name: "bg" + String(randomValue))
     if let data = asset?.data {
       let base64string = data.base64EncodedString()
