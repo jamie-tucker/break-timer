@@ -48,6 +48,7 @@ struct PopoverView: View {
           Text("+")
             .font(.title)
             .fontWeight(.semibold)
+            .frame(minWidth: 20)
         }
         .buttonStyle(FilledButton())
 
@@ -55,6 +56,7 @@ struct PopoverView: View {
           Text("-")
             .font(.title)
             .fontWeight(.semibold)
+            .frame(minWidth: 20)
         }
         .buttonStyle(FilledButton())
       }

@@ -21,7 +21,7 @@ struct AlarmView: View {
           .font(.system(size: 100))
           .fontWeight(.ultraLight)
           .foregroundColor(.white)
-          .shadow(color: Color.black.opacity(0.75), radius: 3, x: 0, y: 0)
+          .shadow(color: Color.black.opacity(0.85), radius: 3, x: 0, y: 0)
           .offset(y: 20)
 
         Spacer()
@@ -47,7 +47,8 @@ struct AlarmView: View {
               .font(.largeTitle)
               .fontWeight(.semibold)
               .offset(y: 4)
-              .shadow(color: Color.black.opacity(0.75), radius: 3, x: 0, y: 0)
+              .foregroundColor(.white)
+              .shadow(color: Color.black.opacity(0.85), radius: 3, x: 0, y: 0)
           }
         }
       }
