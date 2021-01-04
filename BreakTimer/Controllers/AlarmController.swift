@@ -23,6 +23,21 @@ class AlarmController: BTimerProtocol {
     let view = AlarmView(timer: timer)
     window.contentView = NSHostingView(rootView: view)
     timer.startTimer()
+    let screenFrame = NSScreen.screens[0].visibleFrame
+
+    window.setFrame(
+      NSRect(
+        x: 0,
+        y: 0,
+        width: CGFloat((screenFrame.width) / 2.0),
+        height: CGFloat((screenFrame.height) / 2.0)),
+      display: true)
+
+    let midPoint: CGPoint = CGPoint(
+      x: screenFrame.origin.x + CGFloat((screenFrame.width) / 4.0),
+      y: screenFrame.origin.y + CGFloat((screenFrame.height) / 4.0))
+
+    window.setFrameOrigin(midPoint)
     NSApp.activate(ignoringOtherApps: true)
     window.makeKeyAndOrderFront(self)
   }

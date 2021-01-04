@@ -57,18 +57,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   @objc func openAlarmWindow() {
     if alarmController == nil {
-      let screenFrame = NSScreen.main?.frame
+      let screenFrame = NSScreen.screens[0].visibleFrame
       let window = NSWindow(
         contentRect: NSRect(
           x: 0,
           y: 0,
-          width: CGFloat((screenFrame?.width ?? 1920) / 2.0),
-          height: CGFloat((screenFrame?.height ?? 1080) / 2.0)
+          width: CGFloat((screenFrame.width) / 2.0),
+          height: CGFloat((screenFrame.height) / 2.0)
         ),
         styleMask: [.fullSizeContentView],
         backing: .buffered,
         defer: false)
-      window.center()
       window.isReleasedWhenClosed = false
 
       alarmController = AlarmController.init(window)

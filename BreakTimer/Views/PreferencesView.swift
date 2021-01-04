@@ -27,12 +27,12 @@ struct PreferencesView: View {
       HStack {
         Text((breakDuration * 60).toMinuteTimer())
           .frame(maxWidth: 50, alignment: .leading)
-        Slider(value: $breakDuration, in: 0...120, step: 0.5)
+        Slider(value: $breakDuration, in: 0...60, step: 1)
       }
       HStack {
         Text((alarmDuration * 60).toMinuteTimer())
           .frame(maxWidth: 50, alignment: .leading)
-        Slider(value: $alarmDuration, in: 0...30, step: 0.5)
+        Slider(value: $alarmDuration, in: 0...30, step: 1)
       }
 
       Toggle(isOn: $openOnStartup) {
