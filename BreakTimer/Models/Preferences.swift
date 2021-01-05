@@ -6,39 +6,25 @@
 //
 
 import Foundation
-import ServiceManagement
 
 struct Preferences {
-  static var breakTimer: Double! {
-    get {
-      return UserDefaults.standard.object(forKey: PreferencesKey.BreakTimer) as? Double ??
-        Defaults.Preferences[PreferencesKey.BreakTimer] as? Double
-    }
-
-    set(newTime) {
-      UserDefaults.standard.setValue(newTime, forKey: PreferencesKey.BreakTimer)
-    }
+  static func getPreference<T>(preferencesKey: String) -> T? {
+    return Settings.getUserDefaultValue(key: preferencesKey) ?? Defaults.Preferences[preferencesKey] as? T
   }
 
-  static var alarmTimer: Double! {
-    get {
-      return UserDefaults.standard.object(forKey: PreferencesKey.AlarmTimer) as? Double ??
-        Defaults.Preferences[PreferencesKey.AlarmTimer] as? Double
-    }
-
-    set(newTime) {
-      UserDefaults.standard.setValue(newTime, forKey: PreferencesKey.AlarmTimer)
-    }
+  static func getBool(_ preferencesKey: String) -> Bool {
+    return getPreference(preferencesKey: preferencesKey) ?? Bool()
   }
 
-  static var openOnStartup: Bool! {
-    get {
-      return UserDefaults.standard.object(forKey: PreferencesKey.OpenOnStartup) as? Bool ??
-        Defaults.Preferences[PreferencesKey.OpenOnStartup] as? Bool
-    }
+  static func getDouble(_ preferencesKey: String) -> Double {
+    return getPreference(preferencesKey: preferencesKey) ?? Double()
+  }
 
-    set(value) {
-      UserDefaults.standard.setValue(value, forKey: PreferencesKey.OpenOnStartup)
-    }
+  static func getInt(_ preferencesKey: String) -> Int {
+    return getPreference(preferencesKey: preferencesKey) ?? Int()
+  }
+
+  static func setPreference(_ preferencesKey: String, value: Any) {
+    Settings.setUserDefaultValue(preferencesKey, value: value)
   }
 }

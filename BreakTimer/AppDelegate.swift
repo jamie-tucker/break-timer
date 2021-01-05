@@ -17,7 +17,7 @@ extension Notification.Name {
 class AppDelegate: NSObject, NSApplicationDelegate {
   var popover: NSPopover!
   var preferencesWindow: NSWindow!
-  var mainTimer = BTimer(durationMinutes: Preferences.breakTimer)
+  var mainTimer = BTimer(durationMinutes: Preferences.getDouble(PreferencesKeys.BreakTimer))
   var statusBar: StatusBarController?
   var alarmController: AlarmController?
 
@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let runningApps = NSWorkspace.shared.runningApplications
     let isRunning = !runningApps.filter { $0.bundleIdentifier == Config.LauncherAppID }.isEmpty
 
-    SMLoginItemSetEnabled(Config.LauncherAppID as CFString, Preferences.openOnStartup)
+    SMLoginItemSetEnabled(Config.LauncherAppID as CFString, Preferences.getBool(PreferencesKeys.OpenOnStartup))
 
     if isRunning {
       DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
@@ -48,6 +48,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.popover = popover
 
     self.statusBar = StatusBarController.init(self.popover, timer: mainTimer)
+  }
+
+  static func getDocumentsDirectory() -> URL {
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let documentsDirectory = paths[0]
+    return documentsDirectory
   }
 
   @objc func updateTimer() {
@@ -92,7 +98,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         backing: .buffered,
         defer: false)
       window.center()
-      window.isReleasedWhenClosed = true
+      window.isReleasedWhenClosed = false
 
       preferencesWindow = window
     }

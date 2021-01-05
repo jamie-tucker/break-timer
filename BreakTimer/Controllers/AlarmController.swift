@@ -14,7 +14,7 @@ class AlarmController: BTimerProtocol {
 
   init(_ window: NSWindow) {
     self.window = window
-    self.timer = BTimer(durationMinutes: Preferences.alarmTimer)
+    self.timer = BTimer(durationMinutes: Preferences.getDouble(PreferencesKeys.AlarmTimer))
 
     self.timer.delegate = self
   }
@@ -47,7 +47,7 @@ class AlarmController: BTimerProtocol {
   }
 
   func updateTimer() {
-    timer.setTimer(durationMinutes: Preferences.alarmTimer)
+    timer.setTimer(durationMinutes: Preferences.getDouble(PreferencesKeys.AlarmTimer))
   }
 
   func timeRemaining(_ timer: BTimer, timeRemaining: TimeInterval) {

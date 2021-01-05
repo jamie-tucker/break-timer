@@ -11,16 +11,18 @@ enum Config {
   static let LauncherAppID: String = "com.tucker.break-timer-launcher"
 }
 
-enum PreferencesKey {
+enum PreferencesKeys {
   static let BreakTimer: String = "BreakTimer"
   static let AlarmTimer: String = "AlarmTimer"
   static let OpenOnStartup: String = "StartOnWake"
+  static let NumberOfPomodoros: String = "NumberOfPomodoros"
 }
 
 enum Defaults {
   static let Preferences: [String: Any] = [
-    PreferencesKey.BreakTimer: 25.0,
-    PreferencesKey.AlarmTimer: 5.0,
-    PreferencesKey.OpenOnStartup: true
+    PreferencesKeys.BreakTimer: 25.0,
+    PreferencesKeys.AlarmTimer: 5.0,
+    PreferencesKeys.OpenOnStartup: true,
+    PreferencesKeys.NumberOfPomodoros: 8
   ]
 }

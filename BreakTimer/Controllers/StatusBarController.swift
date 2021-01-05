@@ -74,7 +74,7 @@ class StatusBarController: BTimerProtocol {
   }
 
   func updateTimer() {
-    timer.setTimer(durationMinutes: Preferences.breakTimer)
+    timer.setTimer(durationMinutes: Preferences.getDouble(PreferencesKeys.BreakTimer))
   }
 
   func timeRemaining(_ timer: BTimer, timeRemaining: TimeInterval) {

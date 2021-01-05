@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct PreferencesView: View {
-  @State private var openOnStartup: Bool = Preferences.openOnStartup
-  @State private var breakDuration: Double = Preferences.breakTimer
-  @State private var alarmDuration: Double = Preferences.alarmTimer
+  @State private var openOnStartup: Bool = Preferences.getBool(PreferencesKeys.OpenOnStartup)
+  @State private var breakDuration: Double = Preferences.getDouble(PreferencesKeys.BreakTimer)
+  @State private var alarmDuration: Double = Preferences.getDouble(PreferencesKeys.AlarmTimer)
+  @State private var numberOfPomodoros: Double = Preferences.getDouble(PreferencesKeys.NumberOfPomodoros)
 
-  @State private var cachedBreakDuration: Double = Preferences.breakTimer
-  @State private var cachedAlarmDuration: Double = Preferences.alarmTimer
-  @State private var cachedOpenOnStartup: Bool = Preferences.openOnStartup
+  @State private var cachedOpenOnStartup: Bool = Preferences.getBool(PreferencesKeys.OpenOnStartup)
+  @State private var cachedBreakDuration: Double = Preferences.getDouble(PreferencesKeys.BreakTimer)
+  @State private var cachedAlarmDuration: Double = Preferences.getDouble(PreferencesKeys.AlarmTimer)
+  @State private var cachedNumberOfPomodoros: Double = Preferences.getDouble(PreferencesKeys.NumberOfPomodoros)
 
   private var hasChanged: Bool {
     return cachedBreakDuration != breakDuration
       || cachedAlarmDuration != alarmDuration
       || cachedOpenOnStartup != openOnStartup
+      || cachedNumberOfPomodoros != numberOfPomodoros
   }
 
   var body: some View {
@@ -33,6 +36,12 @@ struct PreferencesView: View {
         Text((alarmDuration * 60).toMinuteTimer())
           .frame(maxWidth: 50, alignment: .leading)
         Slider(value: $alarmDuration, in: 0...30, step: 1)
+      }
+
+      HStack {
+        Text(numberOfPomodoros.toString())
+          .frame(maxWidth: 50, alignment: .leading)
+        Slider(value: $numberOfPomodoros, in: 1...24, step: 1)
       }
 
       Toggle(isOn: $openOnStartup) {
@@ -50,13 +59,15 @@ struct PreferencesView: View {
   }
 
   func onConfirm() {
-    Preferences.breakTimer = breakDuration
-    Preferences.alarmTimer = alarmDuration
-    Preferences.openOnStartup = openOnStartup
+    Preferences.setPreference(PreferencesKeys.BreakTimer, value: breakDuration)
+    Preferences.setPreference(PreferencesKeys.AlarmTimer, value: alarmDuration)
+    Preferences.setPreference(PreferencesKeys.OpenOnStartup, value: openOnStartup)
+    Preferences.setPreference(PreferencesKeys.NumberOfPomodoros, value: numberOfPomodoros)
 
     cachedBreakDuration = breakDuration
     cachedAlarmDuration = alarmDuration
     cachedOpenOnStartup = openOnStartup
+    cachedNumberOfPomodoros = numberOfPomodoros
 
     NSApp.sendAction(#selector(AppDelegate.updateTimer), to: nil, from: nil)
   }
@@ -65,6 +76,7 @@ struct PreferencesView: View {
     breakDuration = cachedBreakDuration
     alarmDuration = cachedAlarmDuration
     openOnStartup = cachedOpenOnStartup
+    numberOfPomodoros = cachedNumberOfPomodoros
   }
 }
 
