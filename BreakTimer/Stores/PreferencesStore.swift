@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Preferences {
+struct PreferencesStore {
   static func getPreference<T>(preferencesKey: String) -> T? {
-    return Settings.getUserDefaultValue(key: preferencesKey) ?? Defaults.Preferences[preferencesKey] as? T
+    return SettingsStore.getUserDefaultValue(key: preferencesKey) ?? Defaults.Preferences[preferencesKey] as? T
   }
 
   static func getBool(_ preferencesKey: String) -> Bool {
@@ -25,6 +25,6 @@ struct Preferences {
   }
 
   static func setPreference(_ preferencesKey: String, value: Any) {
-    Settings.setUserDefaultValue(preferencesKey, value: value)
+    SettingsStore.setUserDefaultValue(preferencesKey, value: value)
   }
 }

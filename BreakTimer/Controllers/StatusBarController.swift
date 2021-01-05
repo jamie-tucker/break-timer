@@ -73,8 +73,8 @@ class StatusBarController: BTimerProtocol {
     }
   }
 
-  func updateTimer() {
-    timer.setTimer(durationMinutes: Preferences.getDouble(PreferencesKeys.BreakTimer))
+  func resetTimer() {
+    timer.setTimer(durationMinutes: PreferencesStore.getDouble(PreferencesKeys.SessionTimer))
   }
 
   func timeRemaining(_ timer: BTimer, timeRemaining: TimeInterval) {
@@ -82,6 +82,6 @@ class StatusBarController: BTimerProtocol {
   }
 
   func timerHasFinished(_ timer: BTimer) {
-    NSApp.sendAction(#selector(AppDelegate.openAlarmWindow), to: nil, from: nil)
+    NSApp.sendAction(#selector(AppDelegate.openBreakWindow), to: nil, from: nil)
   }
 }

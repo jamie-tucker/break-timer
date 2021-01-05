@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Settings {
+struct SettingsStore {
   static func getUserDefaultValue<T> (key: String) -> T? {
     return UserDefaults.standard.object(forKey: key) as? T
   }

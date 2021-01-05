@@ -17,15 +17,15 @@ extension Notification.Name {
 class AppDelegate: NSObject, NSApplicationDelegate {
   var popover: NSPopover!
   var preferencesWindow: NSWindow!
-  var mainTimer = BTimer(durationMinutes: Preferences.getDouble(PreferencesKeys.BreakTimer))
+  var sessionTimer = BTimer(durationMinutes: PreferencesStore.getDouble(PreferencesKeys.SessionTimer))
   var statusBar: StatusBarController?
-  var alarmController: AlarmController?
+  var breakController: BreakController?
 
   func applicationDidFinishLaunching(_: Notification) {
     let runningApps = NSWorkspace.shared.runningApplications
     let isRunning = !runningApps.filter { $0.bundleIdentifier == Config.LauncherAppID }.isEmpty
 
-    SMLoginItemSetEnabled(Config.LauncherAppID as CFString, Preferences.getBool(PreferencesKeys.OpenOnStartup))
+    SMLoginItemSetEnabled(Config.LauncherAppID as CFString, PreferencesStore.getBool(PreferencesKeys.OpenOnStartup))
 
     if isRunning {
       DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   private func initializeStatusBar() {
-    let popoverView = PopoverView(timer: mainTimer)
+    let popoverView = PopoverView(timer: sessionTimer)
 
     let popover = NSPopover()
     popover.contentSize = NSSize(width: 360.0, height: 360.0)
@@ -47,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     popover.contentViewController = NSHostingController(rootView: popoverView)
     self.popover = popover
 
-    self.statusBar = StatusBarController.init(self.popover, timer: mainTimer)
+    self.statusBar = StatusBarController.init(self.popover, timer: sessionTimer)
   }
 
   static func getDocumentsDirectory() -> URL {
@@ -57,12 +57,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   @objc func updateTimer() {
-    self.statusBar?.updateTimer()
-    self.alarmController?.updateTimer()
+    self.statusBar?.resetTimer()
+    self.breakController?.resetTimer()
   }
 
-  @objc func openAlarmWindow() {
-    if alarmController == nil {
+  @objc func openBreakWindow() {
+    if breakController == nil {
       let screenFrame = NSScreen.screens[0].visibleFrame
       let window = NSWindow(
         contentRect: NSRect(
@@ -76,18 +76,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         defer: false)
       window.isReleasedWhenClosed = false
 
-      alarmController = AlarmController.init(window)
+      breakController = BreakController.init(window)
     }
 
-    alarmController?.openWindow()
+    breakController?.openWindow()
   }
 
   @objc func restartTimer() {
-    mainTimer.startTimer()
+    sessionTimer.startTimer()
   }
 
-  @objc func closeAlarmWindow() {
-    alarmController?.closeWindow()
+  @objc func closeBreakWindow() {
+    breakController?.closeWindow()
   }
 
   @objc func openPreferencesWindow() {

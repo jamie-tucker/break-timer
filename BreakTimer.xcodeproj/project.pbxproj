@@ -22,10 +22,10 @@
 		809377FA258FDF3400D01761 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 809377F8258FDF3400D01761 /* Main.storyboard */; };
 		80937806258FDF3400D01761 /* BreakTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80937805258FDF3400D01761 /* BreakTimerTests.swift */; };
 		80937811258FDF3400D01761 /* BreakTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80937810258FDF3400D01761 /* BreakTimerUITests.swift */; };
-		8097CE1D25A4BE7100CD4E91 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097CE1C25A4BE7100CD4E91 /* Settings.swift */; };
-		80ABC02A259D179D00B68883 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC029259D179D00B68883 /* AlarmView.swift */; };
-		80ABC03B259D399200B68883 /* AlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC03A259D399200B68883 /* AlarmController.swift */; };
-		80ABC040259D734700B68883 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC03F259D734700B68883 /* Preferences.swift */; };
+		8097CE1D25A4BE7100CD4E91 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097CE1C25A4BE7100CD4E91 /* SettingsStore.swift */; };
+		80ABC02A259D179D00B68883 /* BreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC029259D179D00B68883 /* BreakView.swift */; };
+		80ABC03B259D399200B68883 /* BreakController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC03A259D399200B68883 /* BreakController.swift */; };
+		80ABC040259D734700B68883 /* PreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC03F259D734700B68883 /* PreferencesStore.swift */; };
 		80CACBC725A25C20001464E1 /* GifViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CACBC625A25C20001464E1 /* GifViewer.swift */; };
 		80D532E72590EF0600E873D7 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 80D532E62590EF0600E873D7 /* SwiftDate */; };
 		80D532F22590F3B900E873D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D532F12590F3B900E873D7 /* Constants.swift */; };
@@ -89,10 +89,10 @@
 		8093780C258FDF3400D01761 /* BreakTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreakTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80937810258FDF3400D01761 /* BreakTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakTimerUITests.swift; sourceTree = "<group>"; };
 		80937812258FDF3400D01761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8097CE1C25A4BE7100CD4E91 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		80ABC029259D179D00B68883 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
-		80ABC03A259D399200B68883 /* AlarmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmController.swift; sourceTree = "<group>"; };
-		80ABC03F259D734700B68883 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		8097CE1C25A4BE7100CD4E91 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		80ABC029259D179D00B68883 /* BreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakView.swift; sourceTree = "<group>"; };
+		80ABC03A259D399200B68883 /* BreakController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakController.swift; sourceTree = "<group>"; };
+		80ABC03F259D734700B68883 /* PreferencesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStore.swift; sourceTree = "<group>"; };
 		80CACBC625A25C20001464E1 /* GifViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewer.swift; sourceTree = "<group>"; };
 		80D532F12590F3B900E873D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		80D53338259158ED00E873D7 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
@@ -230,9 +230,7 @@
 			children = (
 				80D532F12590F3B900E873D7 /* Constants.swift */,
 				801030052593AFC600F7AC5B /* StatusMenu.swift */,
-				80ABC03F259D734700B68883 /* Preferences.swift */,
 				805F88BE2597CA8400FBE9AF /* BTimer.swift */,
-				8097CE1C25A4BE7100CD4E91 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -243,7 +241,7 @@
 				805F88B92597CA1500FBE9AF /* PreferencesView.swift */,
 				809377F1258FDF3300D01761 /* PopoverView.swift */,
 				806758FE259BD32A00316932 /* Button.swift */,
-				80ABC029259D179D00B68883 /* AlarmView.swift */,
+				80ABC029259D179D00B68883 /* BreakView.swift */,
 				80CACBC625A25C20001464E1 /* GifViewer.swift */,
 			);
 			path = Views;
@@ -253,7 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				80D53338259158ED00E873D7 /* StatusBarController.swift */,
-				80ABC03A259D399200B68883 /* AlarmController.swift */,
+				80ABC03A259D399200B68883 /* BreakController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -261,6 +259,8 @@
 		80D532EF2590F32400E873D7 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				80ABC03F259D734700B68883 /* PreferencesStore.swift */,
+				8097CE1C25A4BE7100CD4E91 /* SettingsStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -497,15 +497,15 @@
 				80FF93622591657C008C4C40 /* EventMonitor.swift in Sources */,
 				80D53339259158ED00E873D7 /* StatusBarController.swift in Sources */,
 				801030062593AFC600F7AC5B /* StatusMenu.swift in Sources */,
-				80ABC03B259D399200B68883 /* AlarmController.swift in Sources */,
+				80ABC03B259D399200B68883 /* BreakController.swift in Sources */,
 				806758FF259BD32A00316932 /* Button.swift in Sources */,
 				809377F0258FDF3300D01761 /* AppDelegate.swift in Sources */,
-				80ABC02A259D179D00B68883 /* AlarmView.swift in Sources */,
-				8097CE1D25A4BE7100CD4E91 /* Settings.swift in Sources */,
+				80ABC02A259D179D00B68883 /* BreakView.swift in Sources */,
+				8097CE1D25A4BE7100CD4E91 /* SettingsStore.swift in Sources */,
 				80F881D0259D8DD9006312D9 /* AppState.swift in Sources */,
 				805F88BF2597CA8400FBE9AF /* BTimer.swift in Sources */,
 				805F88BA2597CA1500FBE9AF /* PreferencesView.swift in Sources */,
-				80ABC040259D734700B68883 /* Preferences.swift in Sources */,
+				80ABC040259D734700B68883 /* PreferencesStore.swift in Sources */,
 				80D532F22590F3B900E873D7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

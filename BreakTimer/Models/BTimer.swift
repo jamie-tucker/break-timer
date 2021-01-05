@@ -110,5 +110,5 @@ class BTimer: ObservableObject {
 protocol BTimerProtocol: AnyObject {
   func timeRemaining(_ timer: BTimer, timeRemaining: TimeInterval)
   func timerHasFinished(_ timer: BTimer)
-  func updateTimer()
+  func resetTimer()
 }

@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct PreferencesView: View {
-  @State private var openOnStartup: Bool = Preferences.getBool(PreferencesKeys.OpenOnStartup)
-  @State private var breakDuration: Double = Preferences.getDouble(PreferencesKeys.BreakTimer)
-  @State private var alarmDuration: Double = Preferences.getDouble(PreferencesKeys.AlarmTimer)
-  @State private var numberOfPomodoros: Double = Preferences.getDouble(PreferencesKeys.NumberOfPomodoros)
+  @State private var openOnStartup: Bool = PreferencesStore.getBool(PreferencesKeys.OpenOnStartup)
+  @State private var sessionDuration: Double = PreferencesStore.getDouble(PreferencesKeys.SessionTimer)
+  @State private var breakDuration: Double = PreferencesStore.getDouble(PreferencesKeys.BreakTimer)
+  @State private var numberOfPomodoros: Double = PreferencesStore.getDouble(PreferencesKeys.NumberOfSessions)
 
-  @State private var cachedOpenOnStartup: Bool = Preferences.getBool(PreferencesKeys.OpenOnStartup)
-  @State private var cachedBreakDuration: Double = Preferences.getDouble(PreferencesKeys.BreakTimer)
-  @State private var cachedAlarmDuration: Double = Preferences.getDouble(PreferencesKeys.AlarmTimer)
-  @State private var cachedNumberOfPomodoros: Double = Preferences.getDouble(PreferencesKeys.NumberOfPomodoros)
+  @State private var cachedOpenOnStartup: Bool = PreferencesStore.getBool(PreferencesKeys.OpenOnStartup)
+  @State private var cachedSessionDuration: Double = PreferencesStore.getDouble(PreferencesKeys.SessionTimer)
+  @State private var cachedBreakDuration: Double = PreferencesStore.getDouble(PreferencesKeys.BreakTimer)
+  @State private var cachedNumberOfPomodoros: Double = PreferencesStore.getDouble(PreferencesKeys.NumberOfSessions)
 
   private var hasChanged: Bool {
-    return cachedBreakDuration != breakDuration
-      || cachedAlarmDuration != alarmDuration
+    return cachedSessionDuration != sessionDuration
+      || cachedBreakDuration != breakDuration
       || cachedOpenOnStartup != openOnStartup
       || cachedNumberOfPomodoros != numberOfPomodoros
   }
@@ -28,14 +28,14 @@ struct PreferencesView: View {
   var body: some View {
     VStack(alignment: .leading) {
       HStack {
-        Text((breakDuration * 60).toMinuteTimer())
+        Text((sessionDuration * 60).toMinuteTimer())
           .frame(maxWidth: 50, alignment: .leading)
-        Slider(value: $breakDuration, in: 0...60, step: 1)
+        Slider(value: $sessionDuration, in: 0...60, step: 1)
       }
       HStack {
-        Text((alarmDuration * 60).toMinuteTimer())
+        Text((breakDuration * 60).toMinuteTimer())
           .frame(maxWidth: 50, alignment: .leading)
-        Slider(value: $alarmDuration, in: 0...30, step: 1)
+        Slider(value: $breakDuration, in: 0...30, step: 1)
       }
 
       HStack {
@@ -59,13 +59,13 @@ struct PreferencesView: View {
   }
 
   func onConfirm() {
-    Preferences.setPreference(PreferencesKeys.BreakTimer, value: breakDuration)
-    Preferences.setPreference(PreferencesKeys.AlarmTimer, value: alarmDuration)
-    Preferences.setPreference(PreferencesKeys.OpenOnStartup, value: openOnStartup)
-    Preferences.setPreference(PreferencesKeys.NumberOfPomodoros, value: numberOfPomodoros)
+    PreferencesStore.setPreference(PreferencesKeys.SessionTimer, value: sessionDuration)
+    PreferencesStore.setPreference(PreferencesKeys.BreakTimer, value: breakDuration)
+    PreferencesStore.setPreference(PreferencesKeys.OpenOnStartup, value: openOnStartup)
+    PreferencesStore.setPreference(PreferencesKeys.NumberOfSessions, value: numberOfPomodoros)
 
+    cachedSessionDuration = sessionDuration
     cachedBreakDuration = breakDuration
-    cachedAlarmDuration = alarmDuration
     cachedOpenOnStartup = openOnStartup
     cachedNumberOfPomodoros = numberOfPomodoros
 
@@ -73,8 +73,8 @@ struct PreferencesView: View {
   }
 
   func onCancel() {
+    sessionDuration = cachedSessionDuration
     breakDuration = cachedBreakDuration
-    alarmDuration = cachedAlarmDuration
     openOnStartup = cachedOpenOnStartup
     numberOfPomodoros = cachedNumberOfPomodoros
   }

@@ -1,5 +1,5 @@
 //
-//  AlarmController.swift
+//  BreakController.swift
 //  BreakTimer
 //
 //  Created by Jamie Tucker on 2020-12-30.
@@ -8,19 +8,19 @@
 import Cocoa
 import SwiftUI
 
-class AlarmController: BTimerProtocol {
+class BreakController: BTimerProtocol {
   var window: NSWindow!
   var timer: BTimer
 
   init(_ window: NSWindow) {
     self.window = window
-    self.timer = BTimer(durationMinutes: Preferences.getDouble(PreferencesKeys.AlarmTimer))
+    self.timer = BTimer(durationMinutes: PreferencesStore.getDouble(PreferencesKeys.BreakTimer))
 
     self.timer.delegate = self
   }
 
   func openWindow() {
-    let view = AlarmView(timer: timer)
+    let view = BreakView(timer: timer)
     window.contentView = NSHostingView(rootView: view)
     timer.startTimer()
     let screenFrame = NSScreen.screens[0].visibleFrame
@@ -46,8 +46,8 @@ class AlarmController: BTimerProtocol {
     window.close()
   }
 
-  func updateTimer() {
-    timer.setTimer(durationMinutes: Preferences.getDouble(PreferencesKeys.AlarmTimer))
+  func resetTimer() {
+    timer.setTimer(durationMinutes: PreferencesStore.getDouble(PreferencesKeys.BreakTimer))
   }
 
   func timeRemaining(_ timer: BTimer, timeRemaining: TimeInterval) {

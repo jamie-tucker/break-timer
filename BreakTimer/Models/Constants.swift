@@ -12,17 +12,17 @@ enum Config {
 }
 
 enum PreferencesKeys {
+  static let SessionTimer: String = "SessionTimer"
   static let BreakTimer: String = "BreakTimer"
-  static let AlarmTimer: String = "AlarmTimer"
   static let OpenOnStartup: String = "StartOnWake"
-  static let NumberOfPomodoros: String = "NumberOfPomodoros"
+  static let NumberOfSessions: String = "NumberOfSessions"
 }
 
 enum Defaults {
   static let Preferences: [String: Any] = [
-    PreferencesKeys.BreakTimer: 25.0,
-    PreferencesKeys.AlarmTimer: 5.0,
+    PreferencesKeys.SessionTimer: 25.0,
+    PreferencesKeys.BreakTimer: 5.0,
     PreferencesKeys.OpenOnStartup: true,
-    PreferencesKeys.NumberOfPomodoros: 8
+    PreferencesKeys.NumberOfSessions: 8
   ]
 }
