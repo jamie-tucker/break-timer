@@ -68,7 +68,7 @@ struct PopoverView: View {
           SessionView(
             index: index,
             completedSessions: sessionInfo.completedSessions,
-            totalSessions: sessionInfo.totalSessions)
+            totalSessions: max(sessionInfo.totalSessions, sessionInfo.completedSessions))
         }
       }.padding()
     }
@@ -109,7 +109,7 @@ struct SessionView: View {
 
   @ViewBuilder
   var body: some View {
-    if index <= completedSessions {
+    if index < completedSessions {
       Text("●")
     } else {
       Text("◯")
