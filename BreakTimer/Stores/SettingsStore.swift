@@ -12,16 +12,20 @@ struct SettingsStore {
     return UserDefaults.standard.object(forKey: key) as? T
   }
 
-  static func getBool (key: String) -> Bool {
+  static func getBool (_ key: String) -> Bool {
     return getUserDefaultValue(key: key) ?? Bool()
   }
 
-  static func getDouble(key: String) -> Double {
+  static func getDouble(_ key: String) -> Double {
     return getUserDefaultValue(key: key) ?? Double()
   }
 
-  static func getInt(key: String) -> Int {
+  static func getInt(_ key: String) -> Int {
     return getUserDefaultValue(key: key) ?? Int()
+  }
+
+  static func getDate(_ key: String) -> Date {
+    return getUserDefaultValue(key: key) ?? Date()
   }
 
   static func setUserDefaultValue(_ key: String, value: Any) {

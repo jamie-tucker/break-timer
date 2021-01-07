@@ -61,7 +61,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.breakController?.resetTimer()
   }
 
-  @objc func openBreakWindow() {
+  @objc func onSessionTimerHasFinished() {
+    self.openBreakWindow()
+    let completedSessions = SettingsStore.getInt(SettingsKeys.NumberOfCompletedSessions) + 1
+    SettingsStore.setUserDefaultValue(SettingsKeys.NumberOfCompletedSessions, value: completedSessions)
+  }
+
+  func openBreakWindow() {
     if breakController == nil {
       let screenFrame = NSScreen.screens[0].visibleFrame
       let window = NSWindow(

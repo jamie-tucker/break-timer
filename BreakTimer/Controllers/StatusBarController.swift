@@ -57,6 +57,12 @@ class StatusBarController: BTimerProtocol {
 
   func showPopover(_ sender: AnyObject) {
     if let statusBarButton = statusItem.button {
+      let day = SettingsStore.getDate(SettingsKeys.TodaysDate)
+      if !day.isToday {
+        SettingsStore.setUserDefaultValue(SettingsKeys.TodaysDate, value: Date())
+        SettingsStore.setUserDefaultValue(SettingsKeys.NumberOfCompletedSessions, value: 0)
+      }
+
       popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.minY)
       eventMonitor?.start()
     }
@@ -82,6 +88,6 @@ class StatusBarController: BTimerProtocol {
   }
 
   func timerHasFinished(_ timer: BTimer) {
-    NSApp.sendAction(#selector(AppDelegate.openBreakWindow), to: nil, from: nil)
+    NSApp.sendAction(#selector(AppDelegate.onSessionTimerHasFinished), to: nil, from: nil)
   }
 }

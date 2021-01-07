@@ -9,7 +9,9 @@ import SwiftUI
 
 struct PopoverView: View {
   @ObservedObject var timer: BTimer
+  @Environment(\.sessionInfo) var sessionInfo: SessionInfo
 
+  @ViewBuilder
   var body: some View {
     VStack(spacing: 30) {
       Text(timer.timeRemaining.toMinuteTimer())
@@ -60,6 +62,15 @@ struct PopoverView: View {
         }
         .buttonStyle(FilledButton())
       }
+
+      HStack {
+        ForEach(0..<max(sessionInfo.totalSessions, sessionInfo.completedSessions), id: \.self) { index in
+          SessionView(
+            index: index,
+            completedSessions: sessionInfo.completedSessions,
+            totalSessions: sessionInfo.totalSessions)
+        }
+      }.padding()
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
   }
@@ -86,5 +97,46 @@ struct PopoverView: View {
 struct PopoverView_Previews: PreviewProvider {
   static var previews: some View {
     PopoverView(timer: BTimer(durationMinutes: 0.1))
+  }
+}
+
+// MARK: - Dependencies
+
+struct SessionView: View {
+  var index: Int
+  var completedSessions: Int
+  var totalSessions: Int
+
+  @ViewBuilder
+  var body: some View {
+    if index <= completedSessions {
+      Text("●")
+    } else {
+      Text("◯")
+    }
+
+    if (index + 1) % 4 == 0 && (index + 1) != totalSessions {
+      Text(" ")
+    }
+  }
+}
+
+struct SessionInfo {
+  var totalSessions: Int = PreferencesStore.getInt(PreferencesKeys.NumberOfTotalSessions)
+  var completedSessions: Int = SettingsStore.getInt(SettingsKeys.NumberOfCompletedSessions)
+}
+
+// MARK: - Environment Boilerplate
+
+struct SessionInfoKey: EnvironmentKey {
+  static var defaultValue: SessionInfo {
+    return SessionInfo()
+  }
+}
+
+extension EnvironmentValues {
+  var sessionInfo: SessionInfo {
+    get { return self[SessionInfoKey.self]  }
+    set { self[SessionInfoKey.self] = newValue }
   }
 }

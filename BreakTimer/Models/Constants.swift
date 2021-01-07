@@ -12,10 +12,15 @@ enum Config {
 }
 
 enum PreferencesKeys {
-  static let SessionTimer: String = "SessionTimer"
-  static let BreakTimer: String = "BreakTimer"
-  static let OpenOnStartup: String = "StartOnWake"
-  static let NumberOfSessions: String = "NumberOfSessions"
+  static let SessionTimer: String = "session-timer"
+  static let BreakTimer: String = "break-timer"
+  static let OpenOnStartup: String = "start-on-wake"
+  static let NumberOfTotalSessions: String = "number-of-total-sessions"
+}
+
+enum SettingsKeys {
+  static let TodaysDate: String = "todays-date"
+  static let NumberOfCompletedSessions: String = "number-of-completed-sessions"
 }
 
 enum Defaults {
@@ -23,6 +28,6 @@ enum Defaults {
     PreferencesKeys.SessionTimer: 25.0,
     PreferencesKeys.BreakTimer: 5.0,
     PreferencesKeys.OpenOnStartup: true,
-    PreferencesKeys.NumberOfSessions: 8
+    PreferencesKeys.NumberOfTotalSessions: 8
   ]
 }

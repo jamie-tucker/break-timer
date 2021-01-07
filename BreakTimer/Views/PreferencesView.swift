@@ -11,18 +11,19 @@ struct PreferencesView: View {
   @State private var openOnStartup: Bool = PreferencesStore.getBool(PreferencesKeys.OpenOnStartup)
   @State private var sessionDuration: Double = PreferencesStore.getDouble(PreferencesKeys.SessionTimer)
   @State private var breakDuration: Double = PreferencesStore.getDouble(PreferencesKeys.BreakTimer)
-  @State private var numberOfPomodoros: Double = PreferencesStore.getDouble(PreferencesKeys.NumberOfSessions)
+  @State private var numberOfTotalSessions: Double = PreferencesStore.getDouble(PreferencesKeys.NumberOfTotalSessions)
 
   @State private var cachedOpenOnStartup: Bool = PreferencesStore.getBool(PreferencesKeys.OpenOnStartup)
   @State private var cachedSessionDuration: Double = PreferencesStore.getDouble(PreferencesKeys.SessionTimer)
   @State private var cachedBreakDuration: Double = PreferencesStore.getDouble(PreferencesKeys.BreakTimer)
-  @State private var cachedNumberOfPomodoros: Double = PreferencesStore.getDouble(PreferencesKeys.NumberOfSessions)
+  @State private var cachedNumberOfTotalSessions: Double =
+    PreferencesStore.getDouble(PreferencesKeys.NumberOfTotalSessions)
 
   private var hasChanged: Bool {
     return cachedSessionDuration != sessionDuration
       || cachedBreakDuration != breakDuration
       || cachedOpenOnStartup != openOnStartup
-      || cachedNumberOfPomodoros != numberOfPomodoros
+      || cachedNumberOfTotalSessions != numberOfTotalSessions
   }
 
   var body: some View {
@@ -39,9 +40,9 @@ struct PreferencesView: View {
       }
 
       HStack {
-        Text(numberOfPomodoros.toString())
+        Text(numberOfTotalSessions.toString())
           .frame(maxWidth: 50, alignment: .leading)
-        Slider(value: $numberOfPomodoros, in: 1...24, step: 1)
+        Slider(value: $numberOfTotalSessions, in: 1...12, step: 1)
       }
 
       Toggle(isOn: $openOnStartup) {
@@ -62,12 +63,12 @@ struct PreferencesView: View {
     PreferencesStore.setPreference(PreferencesKeys.SessionTimer, value: sessionDuration)
     PreferencesStore.setPreference(PreferencesKeys.BreakTimer, value: breakDuration)
     PreferencesStore.setPreference(PreferencesKeys.OpenOnStartup, value: openOnStartup)
-    PreferencesStore.setPreference(PreferencesKeys.NumberOfSessions, value: numberOfPomodoros)
+    PreferencesStore.setPreference(PreferencesKeys.NumberOfTotalSessions, value: numberOfTotalSessions)
 
     cachedSessionDuration = sessionDuration
     cachedBreakDuration = breakDuration
     cachedOpenOnStartup = openOnStartup
-    cachedNumberOfPomodoros = numberOfPomodoros
+    cachedNumberOfTotalSessions = numberOfTotalSessions
 
     NSApp.sendAction(#selector(AppDelegate.updateTimer), to: nil, from: nil)
   }
@@ -76,7 +77,7 @@ struct PreferencesView: View {
     sessionDuration = cachedSessionDuration
     breakDuration = cachedBreakDuration
     openOnStartup = cachedOpenOnStartup
-    numberOfPomodoros = cachedNumberOfPomodoros
+    numberOfTotalSessions = cachedNumberOfTotalSessions
   }
 }
 
