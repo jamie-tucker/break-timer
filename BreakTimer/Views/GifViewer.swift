@@ -44,40 +44,48 @@ struct HTMLRenderingWebViewExample: View {
   var body: some View {
     HTMLRenderingWebView(htmlString: self.$htmlString, baseURL: .constant(nil))
       .onAppear {
-        htmlString = "<meta name=\"viewport\" content=\"initial-scale=1.0\" />" +
-          (self.assetAsString() ?? "image loading failed")
+        var url = AppDelegate.getDocumentsDirectory()
+        url.appendPathComponent("Backgrounds")
+        // TODO: do {} catch {} remvoe optional try?
+        let dirContents = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
+        let imageFiles = dirContents!.filter { $0.pathExtension == "gif" }
+        downloadImage(from: imageFiles.randomElement()!)
       }
   }
 
-  func assetAsString() -> String? {
-    let randomValue = Int.random(in: 1...13)
-    let asset = NSDataAsset(name: "bg" + String(randomValue))
-    if let data = asset?.data {
-      let base64string = data.base64EncodedString()
-      let format = "gif"
-      return
-        """
-          <div style='
+  func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+  }
+
+  func downloadImage(from url: URL) {
+    getData(from: url) { data, _, error in
+      guard let data = data, error == nil else {
+        return
+      }
+      DispatchQueue.main.async {
+        let imageData = data.base64EncodedString()
+        let format = url.pathExtension
+          htmlString = "<meta name=\"viewport\" content=\"initial-scale=1.0\" />" +
+            """
+        <div style='
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          overflow: hidden;
+        '>
+          <img src='data:image/\(format);base64,\(imageData)' style='
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: 75%;
+            left: 50%;
+            min-width: 960px;
+            min-height: 540px;
+            transform: translate(-50%, -50%);
           '>
-            <img src='data:image/\(format);base64,\(base64string)' style='
-              position:absolute;
-              top:0;
-              left:0;
-              right: 0;
-              bottom: 0;
-              margin: auto;
-              min-width: 50%;
-              min-height: 50%;
-            '>
-          </div>
+        </div>
         """
-    } else {
-      return nil
+      }
     }
   }
 }
