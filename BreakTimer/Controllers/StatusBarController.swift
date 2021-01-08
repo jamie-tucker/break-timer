@@ -57,8 +57,9 @@ class StatusBarController: BTimerProtocol {
 
   func showPopover(_ sender: AnyObject) {
     if let statusBarButton = statusItem.button {
-      let day = SettingsStore.getDate(SettingsKeys.TodaysDate)
-      if !day.isToday {
+      let localTodaysDate = SettingsStore.getDate(SettingsKeys.TodaysDate).localDate
+
+      if Date().localDate.compare(toDate: localTodaysDate, granularity: .day) != .orderedSame {
         SettingsStore.setUserDefaultValue(SettingsKeys.NumberOfCompletedSessions, value: 0)
       }
 

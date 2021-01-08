@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8001A29925A90CF1002F1DC6 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8001A29825A90CF1002F1DC6 /* DateExtensions.swift */; };
 		801030062593AFC600F7AC5B /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801030052593AFC600F7AC5B /* StatusMenu.swift */; };
 		803B079E259E4536005A9ED9 /* LauncherApp.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80F881B8259D89A1006312D9 /* LauncherApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		803B07A5259E456F005A9ED9 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803B07A4259E456F005A9ED9 /* ServiceManagement.framework */; };
@@ -68,6 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8001A29825A90CF1002F1DC6 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		801030052593AFC600F7AC5B /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
 		803B07A4259E456F005A9ED9 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		803B07AF259E4940005A9ED9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				80FF93612591657C008C4C40 /* EventMonitor.swift */,
 				806758F9259BC61D00316932 /* TimeIntervalExtensions.swift */,
+				8001A29825A90CF1002F1DC6 /* DateExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80CACBC725A25C20001464E1 /* GifViewer.swift in Sources */,
+				8001A29925A90CF1002F1DC6 /* DateExtensions.swift in Sources */,
 				809377F2258FDF3300D01761 /* PopoverView.swift in Sources */,
 				806758FA259BC61D00316932 /* TimeIntervalExtensions.swift in Sources */,
 				80FF93622591657C008C4C40 /* EventMonitor.swift in Sources */,
