@@ -111,6 +111,9 @@ struct SessionView: View {
   var body: some View {
     if index < completedSessions {
       Text("●")
+    } else if index == completedSessions {
+      Text("●")
+        .foregroundColor(Color.accentColor)
     } else {
       Text("◯")
     }
