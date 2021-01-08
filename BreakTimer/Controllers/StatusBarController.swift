@@ -59,9 +59,10 @@ class StatusBarController: BTimerProtocol {
     if let statusBarButton = statusItem.button {
       let day = SettingsStore.getDate(SettingsKeys.TodaysDate)
       if !day.isToday {
-        SettingsStore.setUserDefaultValue(SettingsKeys.TodaysDate, value: Date())
         SettingsStore.setUserDefaultValue(SettingsKeys.NumberOfCompletedSessions, value: 0)
       }
+
+      SettingsStore.setUserDefaultValue(SettingsKeys.TodaysDate, value: Date())
 
       popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.minY)
       eventMonitor?.start()
