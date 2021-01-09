@@ -64,7 +64,7 @@ struct PopoverView: View {
       }
 
       HStack {
-        ForEach(0..<max(sessionInfo.totalSessions, sessionInfo.completedSessions), id: \.self) { index in
+        ForEach(0..<max(sessionInfo.totalSessions, sessionInfo.completedSessions + 1), id: \.self) { index in
           SessionView(
             index: index,
             completedSessions: sessionInfo.completedSessions,
@@ -118,7 +118,7 @@ struct SessionView: View {
       Text("◯")
     }
 
-    if (index + 1) % 4 == 0 && (index + 1) != totalSessions {
+    if (index + 1) % 4 == 0 && (index + 1) != totalSessions + 1 {
       Text(" ")
     }
   }

@@ -51,7 +51,8 @@ struct HTMLRenderingWebViewExample: View {
             $0.pathExtension == "gif" ||
               $0.pathExtension == "jpg" ||
               $0.pathExtension == "jpeg" ||
-              $0.pathExtension == "png"
+              $0.pathExtension == "png" ||
+              $0.pathExtension == "webp"
           }
 
           if !imageFiles.isEmpty {

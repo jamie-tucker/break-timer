@@ -10,7 +10,6 @@ import Cocoa
 class FileSystem {
   static func createDirectory(_ directoryName: String) {
     let dataPath = getDirectory(directoryName)
-    print(dataPath.absoluteString)
     if !FileManager.default.fileExists(atPath: dataPath.absoluteString) {
       do {
         try FileManager.default.createDirectory(
