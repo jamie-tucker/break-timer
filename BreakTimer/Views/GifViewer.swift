@@ -44,12 +44,20 @@ struct HTMLRenderingWebViewExample: View {
   var body: some View {
     HTMLRenderingWebView(htmlString: self.$htmlString, baseURL: .constant(nil))
       .onAppear {
-        var url = AppDelegate.getDocumentsDirectory()
-        url.appendPathComponent("Backgrounds")
-        // TODO: do {} catch {} remvoe optional try?
-        let dirContents = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
-        let imageFiles = dirContents!.filter { $0.pathExtension == "gif" }
-        downloadImage(from: imageFiles.randomElement()!)
+        let url = FileSystem.getDirectory(Config.BackgroundDirectory)
+
+        if let dirContents = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil) {
+          let imageFiles = dirContents.filter {
+            $0.pathExtension == "gif" ||
+              $0.pathExtension == "jpg" ||
+              $0.pathExtension == "jpeg" ||
+              $0.pathExtension == "png"
+          }
+
+          if !imageFiles.isEmpty {
+            downloadImage(from: imageFiles.randomElement()!)
+          }
+        }
       }
   }
 
