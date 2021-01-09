@@ -9,6 +9,7 @@ import Foundation
 
 enum Config {
   static let LauncherAppID: String = "com.tucker.break-timer-launcher"
+  static let BackgroundDirectory: String = "BreakTimer/Backgrounds"
 }
 
 enum PreferencesKeys {

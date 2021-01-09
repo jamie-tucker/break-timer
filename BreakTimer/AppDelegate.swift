@@ -31,6 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
     }
 
+    FileSystem.createDirectory(Config.BackgroundDirectory)
+
     initializeStatusBar()
   }
 
@@ -48,12 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.popover = popover
 
     self.statusBar = StatusBarController.init(self.popover, timer: sessionTimer)
-  }
-
-  static func getDocumentsDirectory() -> URL {
-    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    let documentsDirectory = paths[0]
-    return documentsDirectory
   }
 
   @objc func updateTimer() {

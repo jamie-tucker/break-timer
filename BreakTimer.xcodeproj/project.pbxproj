@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8001A29925A90CF1002F1DC6 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8001A29825A90CF1002F1DC6 /* DateExtensions.swift */; };
+		8001A29F25A91204002F1DC6 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8001A29E25A91204002F1DC6 /* FileSystem.swift */; };
 		801030062593AFC600F7AC5B /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801030052593AFC600F7AC5B /* StatusMenu.swift */; };
 		803B079E259E4536005A9ED9 /* LauncherApp.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80F881B8259D89A1006312D9 /* LauncherApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		803B07A5259E456F005A9ED9 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803B07A4259E456F005A9ED9 /* ServiceManagement.framework */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		8001A29825A90CF1002F1DC6 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		8001A29E25A91204002F1DC6 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		801030052593AFC600F7AC5B /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
 		803B07A4259E456F005A9ED9 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		803B07AF259E4940005A9ED9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				80FF93612591657C008C4C40 /* EventMonitor.swift */,
 				806758F9259BC61D00316932 /* TimeIntervalExtensions.swift */,
 				8001A29825A90CF1002F1DC6 /* DateExtensions.swift */,
+				8001A29E25A91204002F1DC6 /* FileSystem.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				80ABC03B259D399200B68883 /* BreakController.swift in Sources */,
 				806758FF259BD32A00316932 /* Button.swift in Sources */,
 				809377F0258FDF3300D01761 /* AppDelegate.swift in Sources */,
+				8001A29F25A91204002F1DC6 /* FileSystem.swift in Sources */,
 				80ABC02A259D179D00B68883 /* BreakView.swift in Sources */,
 				8097CE1D25A4BE7100CD4E91 /* SettingsStore.swift in Sources */,
 				80F881D0259D8DD9006312D9 /* AppState.swift in Sources */,
