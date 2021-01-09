@@ -11,13 +11,14 @@ struct PreferencesView: View {
   @State private var openOnStartup: Bool = PreferencesStore.getBool(PreferencesKeys.OpenOnStartup)
   @State private var sessionDuration: Double = PreferencesStore.getDouble(PreferencesKeys.SessionTimer)
   @State private var breakDuration: Double = PreferencesStore.getDouble(PreferencesKeys.BreakTimer)
-  @State private var numberOfTotalSessions: Double = PreferencesStore.getDouble(PreferencesKeys.NumberOfTotalSessions)
+  @State private var numberOfTotalSessions: Double =
+    Double(PreferencesStore.getInt(PreferencesKeys.NumberOfTotalSessions))
 
   @State private var cachedOpenOnStartup: Bool = PreferencesStore.getBool(PreferencesKeys.OpenOnStartup)
   @State private var cachedSessionDuration: Double = PreferencesStore.getDouble(PreferencesKeys.SessionTimer)
   @State private var cachedBreakDuration: Double = PreferencesStore.getDouble(PreferencesKeys.BreakTimer)
   @State private var cachedNumberOfTotalSessions: Double =
-    PreferencesStore.getDouble(PreferencesKeys.NumberOfTotalSessions)
+    Double(PreferencesStore.getInt(PreferencesKeys.NumberOfTotalSessions))
 
   private var hasChanged: Bool {
     return cachedSessionDuration != sessionDuration
@@ -63,7 +64,7 @@ struct PreferencesView: View {
     PreferencesStore.setPreference(PreferencesKeys.SessionTimer, value: sessionDuration)
     PreferencesStore.setPreference(PreferencesKeys.BreakTimer, value: breakDuration)
     PreferencesStore.setPreference(PreferencesKeys.OpenOnStartup, value: openOnStartup)
-    PreferencesStore.setPreference(PreferencesKeys.NumberOfTotalSessions, value: numberOfTotalSessions)
+    PreferencesStore.setPreference(PreferencesKeys.NumberOfTotalSessions, value: Int(numberOfTotalSessions))
 
     cachedSessionDuration = sessionDuration
     cachedBreakDuration = breakDuration

@@ -29,6 +29,6 @@ enum Defaults {
     PreferencesKeys.SessionTimer: 25.0,
     PreferencesKeys.BreakTimer: 5.0,
     PreferencesKeys.OpenOnStartup: true,
-    PreferencesKeys.NumberOfTotalSessions: 8.0
+    PreferencesKeys.NumberOfTotalSessions: 8
   ]
 }
