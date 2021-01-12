@@ -40,7 +40,7 @@ struct BreakView: View {
                 .font(.title)
                 .fontWeight(.semibold)
             }
-            .buttonStyle(FilledButton())
+            .buttonStyle(FilledButton(focused: false))
 
           } else {
             Text("take a break...")

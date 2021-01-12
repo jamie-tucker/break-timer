@@ -44,7 +44,7 @@ struct PopoverView: View {
               .font(.title)
           }
         }
-        .buttonStyle(FilledButton(enabled: !timer.isStopped || timer.timeRemaining != timer.startingDuration))
+        .buttonStyle(FilledButton(focused: !timer.isStopped || timer.timeRemaining != timer.startingDuration))
 
         Button(action: addTime) {
           Text("+")

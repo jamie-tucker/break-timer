@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct FilledButton: ButtonStyle {
-  var enabled: Bool = true
+  var focused: Bool = true
 
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
-      .foregroundColor(!configuration.isPressed && enabled ? .white : .white)
+      .foregroundColor(.white)
       .padding(10)
-      .background(!configuration.isPressed && enabled ? Color.accentColor : .gray)
+      .background(
+        !configuration.isPressed && focused || configuration.isPressed && !focused ?
+          Color.accentColor : Color(NSColor.systemGray))
       .cornerRadius(8)
-      .disabled(!enabled)
   }
 }
