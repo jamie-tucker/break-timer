@@ -17,6 +17,7 @@ enum PreferencesKeys {
   static let BreakTimer: String = "break-timer"
   static let OpenOnStartup: String = "start-on-wake"
   static let NumberOfTotalSessions: String = "number-of-total-sessions"
+  static let MoreMinutes: String = "more-minutes"
 }
 
 enum SettingsKeys {
@@ -29,6 +30,7 @@ enum Defaults {
     PreferencesKeys.SessionTimer: 25.0,
     PreferencesKeys.BreakTimer: 5.0,
     PreferencesKeys.OpenOnStartup: true,
-    PreferencesKeys.NumberOfTotalSessions: 8
+    PreferencesKeys.NumberOfTotalSessions: 8,
+    PreferencesKeys.MoreMinutes: 5.0
   ]
 }

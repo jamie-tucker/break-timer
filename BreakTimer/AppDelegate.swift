@@ -84,6 +84,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     breakController?.openWindow()
   }
 
+  @objc func quickStartTimer() {
+    breakController?.closeWindow()
+    sessionTimer.resumeTimer()
+    sessionTimer.addTime(-PreferencesStore.getDouble(PreferencesKeys.SessionTimer) * 60)
+    sessionTimer.addTime(PreferencesStore.getDouble(PreferencesKeys.MoreMinutes) * 60)
+  }
+
   @objc func restartTimer() {
     sessionTimer.startTimer()
   }

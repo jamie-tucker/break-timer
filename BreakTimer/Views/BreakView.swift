@@ -43,12 +43,30 @@ struct BreakView: View {
             .buttonStyle(FilledButton(focused: false))
 
           } else {
-            Text("take a break...")
-              .font(.largeTitle)
-              .fontWeight(.semibold)
-              .offset(y: 4)
-              .foregroundColor(.white)
-              .shadow(color: Color.black.opacity(0.85), radius: 3, x: 0, y: 0)
+            VStack(alignment: .leading, spacing: 10) {
+              Text("take a break...")
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+                .offset(y: 4)
+                .foregroundColor(.white)
+                .shadow(color: Color.black.opacity(0.85), radius: 3, x: 0, y: 0)
+
+              HStack {
+                Button(action: onMoreTime) {
+                  Text("I Need More Time!")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                }
+                .buttonStyle(FilledButton())
+
+                Button(action: onClose) {
+                  Text("Dismiss")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                }
+                .buttonStyle(FilledButton(focused: false))
+              }
+            }
           }
         }
       }
@@ -65,7 +83,14 @@ struct BreakView: View {
   }
 
   func onClose() {
+    timer.resetTimer()
     NSApp.sendAction(#selector(AppDelegate.closeBreakWindow), to: nil, from: nil)
+  }
+
+  func onMoreTime() {
+    timer.resetTimer()
+    NSApp.sendAction(#selector(AppDelegate.closeBreakWindow), to: nil, from: nil)
+    NSApp.sendAction(#selector(AppDelegate.quickStartTimer), to: nil, from: nil)
   }
 
   func onRestart() {
