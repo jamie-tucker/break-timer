@@ -53,7 +53,7 @@ struct BreakView: View {
 
               HStack {
                 Button(action: onMoreTime) {
-                  Text("I Need More Time!")
+                  Text("Snooze for \(String(format: "%.0f", PreferencesStore.getDouble(PreferencesKeys.SnoozeMinutes))) minutes")
                     .font(.title)
                     .fontWeight(.semibold)
                 }

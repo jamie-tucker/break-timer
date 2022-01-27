@@ -19,48 +19,60 @@ struct PopoverView: View {
         .fontWeight(.ultraLight)
         .foregroundColor(.white)
 
-      HStack(spacing: 5) {
-        Button(action: timerButton) {
-          if timer.isPaused || timer.isStopped {
-            Text("Start")
-              .fontWeight(.semibold)
-              .font(.title)
-          } else {
-            Text("Pause")
-              .fontWeight(.semibold)
-              .font(.title)
+      VStack(spacing: 5) {
+        HStack(spacing: 5) {
+          Button(action: timerButton) {
+            if timer.isPaused || timer.isStopped {
+              Text("Start")
+                .fontWeight(.semibold)
+                .font(.title)
+            } else {
+              Text("Pause")
+                .fontWeight(.semibold)
+                .font(.title)
+            }
           }
-        }
-        .buttonStyle(FilledButton())
+          .buttonStyle(FilledButton())
 
-        Button(action: timer.resetTimer) {
-          if timer.isPaused || timer.isStopped {
-            Text("Reset")
-              .fontWeight(.semibold)
-              .font(.title)
-          } else {
-            Text("Stop")
-              .fontWeight(.semibold)
-              .font(.title)
+          Button(action: timer.resetTimer) {
+            if timer.isPaused || timer.isStopped {
+              Text("Reset")
+                .fontWeight(.semibold)
+                .font(.title)
+            } else {
+              Text("Stop")
+                .fontWeight(.semibold)
+                .font(.title)
+            }
           }
-        }
-        .buttonStyle(FilledButton(focused: !timer.isStopped || timer.timeRemaining != timer.startingDuration))
+          .buttonStyle(FilledButton(focused: !timer.isStopped || timer.timeRemaining != timer.startingDuration))
 
-        Button(action: addTime) {
-          Text("+")
-            .font(.title)
-            .fontWeight(.semibold)
-            .frame(minWidth: 20)
-        }
-        .buttonStyle(FilledButton())
+          Button(action: addTime) {
+            Text("+")
+              .font(.title)
+              .fontWeight(.semibold)
+              .frame(minWidth: 20)
+          }
+          .buttonStyle(FilledButton())
 
-        Button(action: subTime) {
-          Text("-")
-            .font(.title)
-            .fontWeight(.semibold)
-            .frame(minWidth: 20)
+          Button(action: subTime) {
+            Text("-")
+              .font(.title)
+              .fontWeight(.semibold)
+              .frame(minWidth: 20)
+          }
+          .buttonStyle(FilledButton())
         }
-        .buttonStyle(FilledButton())
+
+        HStack {
+          Button(action: endTime) {
+            Text("Go On Break")
+              .font(.title)
+              .fontWeight(.semibold)
+              .padding(5)
+          }
+          .buttonStyle(FilledButton(focused: true))
+        }
       }
 
       HStack {
@@ -91,6 +103,11 @@ struct PopoverView: View {
     } else {
       timer.pauseTimer()
     }
+  }
+
+  func endTime() {
+    timer.addTime(-timer.timeRemaining)
+    timerButton()
   }
 }
 

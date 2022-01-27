@@ -88,7 +88,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     breakController?.closeWindow()
     sessionTimer.resumeTimer()
     sessionTimer.addTime(-PreferencesStore.getDouble(PreferencesKeys.SessionTimer) * 60)
-    sessionTimer.addTime(PreferencesStore.getDouble(PreferencesKeys.MoreMinutes) * 60)
+    sessionTimer.addTime(PreferencesStore.getDouble(PreferencesKeys.SnoozeMinutes) * 60)
+    let completedSessions = SettingsStore.getInt(SettingsKeys.NumberOfCompletedSessions) - 1
+    SettingsStore.setUserDefaultValue(SettingsKeys.NumberOfCompletedSessions, value: completedSessions)
   }
 
   @objc func restartTimer() {
